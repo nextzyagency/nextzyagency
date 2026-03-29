@@ -1,0 +1,168 @@
+---
+// About.astro
+import Star from '../ui/Star.astro';
+---
+<section id="nosotros" class="relative w-full min-h-screen py-32 flex flex-col items-center justify-center overflow-hidden px-6">
+  
+  <!-- Estrellas Decorativas -->
+  <Star class="top-24 right-20 w-8 h-8 opacity-20" />
+  <Star class="bottom-40 left-10 w-5 h-5 opacity-30 text-nextzy-purple" />
+  <Star class="top-1/2 right-[10%] w-4 h-4 opacity-40" />
+
+  <!-- Fondo con efecto de ruido y capa oscura (Paralaje inverso) -->
+  <div class="about-bg absolute inset-0 w-full h-[150%] -top-[25%] z-0 pointer-events-none border-t border-nextzy-gray-800/50 bg-[#0d1219]/40 backdrop-blur-sm">
+    <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+  </div>
+  
+  <div class="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center">
+    
+    <!-- Headline: Cada pixel tiene un propósito -->
+    <h2 class="text-[clamp(2rem,6vw,5.5rem)] lg:text-[6rem] font-black mb-24 tracking-tighter text-nextzy-gray-800 uppercase leading-[1.05] about-headline flex flex-col items-center mt-12 w-full">
+      <!-- Línea 1 -->
+      <div class="flex justify-center gap-x-3 md:gap-x-5 whitespace-nowrap">
+        <span class="word">Cada</span> <span class="word">pixel</span> <span class="word">tiene</span> <span class="word">un</span>
+      </div>
+      <!-- Línea 2 -->
+      <div class="flex justify-center items-center gap-x-3 md:gap-x-5 whitespace-nowrap -mt-4 lg:-mt-10">
+        <span class="font-drama italic text-nextzy-purple-light normal-case text-[clamp(4.5rem,12vw,8rem)] lg:text-[9.5rem] drop-shadow-lg leading-none">propósito.</span>
+      </div>
+    </h2>
+    
+    <div id="about-content" class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center text-left w-full mt-12">
+      <!-- Párrafo Slider -->
+      <p class="lg:col-span-7 text-3xl md:text-4xl lg:text-5xl leading-[1.3] font-medium text-nextzy-gray-500 about-paragraph tracking-tight">
+        Construimos paginas donde cada palabra esta optimizada para <strong class="text-nextzy-white font-bold">generar</strong> 
+        <span class="block mt-4 pb-2">
+          <span class="inline-flex flex-col h-[1.1em] overflow-hidden align-middle text-nextzy-purple-light bg-nextzy-purple/10 px-6 py-1 rounded-3xl text-[1.4em] sm:text-[1.6em] font-drama italic lowercase">
+            <span class="word-slider flex flex-col will-change-transform translate-y-0">
+              <span class="h-[1.1em] flex items-center justify-center">confianza.</span>
+              <span class="h-[1.1em] flex items-center justify-center">ventas.</span>
+              <span class="h-[1.1em] flex items-center justify-center">conversión.</span>
+            </span>
+          </span>
+        </span>
+      </p>
+      
+      <!-- Carrusel de Imágenes Blur -->
+      <div class="lg:col-span-5 relative w-full h-[300px] md:h-[400px] flex items-center justify-center about-images">
+        <!-- Spotlight Morado Posterior -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 md:w-[350px] md:h-[350px] bg-nextzy-purple/30 blur-[100px] rounded-full z-0 pointer-events-none mix-blend-screen"></div>
+
+        <img src="/imagenes/hero/Laptop_with_minimalist_202603251350-Photoroom.png_202603251359-Photoroom.png" class="img-card absolute w-48 h-64 md:w-60 md:h-80 object-cover rounded-2xl shadow-2xl border border-white/10 bg-nextzy-gray-900" />
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop" class="img-card absolute w-48 h-64 md:w-60 md:h-80 object-cover rounded-2xl shadow-2xl border border-white/10" />
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" class="img-card absolute w-48 h-64 md:w-60 md:h-80 object-cover rounded-2xl shadow-2xl border border-white/10" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const aboutSection = document.getElementById('nosotros');
+  
+  if (aboutSection) {
+    // Paralaje Inverso para el fondo
+    gsap.to('.about-bg', {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+
+    // Iluminar palabras individualmente sincronizadas con el scroll
+    const words = document.querySelectorAll('.about-headline .word');
+    
+    gsap.to(words, {
+      color: '#FFFFFF',
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: '.about-headline',
+        start: "top 75%",
+        end: "bottom 30%",
+        scrub: 1
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // ---- Carrusel de Imágenes 3D al Scrollear ----
+      const imgs = gsap.utils.toArray('.img-card');
+      
+      if (imgs.length === 3) {
+        // Estado Inicial
+        gsap.set(imgs[0], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3 });
+        gsap.set(imgs[1], { xPercent: 70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2 });
+        gsap.set(imgs[2], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#about-content",
+            start: "center center", 
+            end: "+=2500vh", // 500vh x 5 etapas (pausa, anim, pausa, anim, pausa)
+            pin: "#nosotros",
+            scrub: 1,
+            snap: 1/5 // Se detiene exacto en 0, 0.2, 0.4, 0.6, 0.8, 1
+          }
+        });
+
+        // FASE 0: Pausa Inicial (Viendo "Confianza")
+        tl.to({}, { duration: 1 });
+
+        // FASE 1: (Transición de Confianza -> Ventas)
+        tl.to('.word-slider', { yPercent: -33.333, duration: 1, ease: 'power1.inOut' }, 1)
+          .to(imgs[0], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, 1)
+          .to(imgs[1], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, 1)
+          .to(imgs[2], { opacity: 0, duration: 0.5, ease: 'none' }, 1)
+          .set(imgs[2], { xPercent: 70, zIndex: 1 }, 1.5)
+          .to(imgs[2], { opacity: 0.4, duration: 0.5, ease: 'none' }, 1.5);
+
+        // FASE 2: Pausa Intermedia (Viendo "Ventas")
+        tl.to({}, { duration: 1 }, 2);
+
+        // FASE 3: (Transición de Ventas -> Conversión)
+        tl.to('.word-slider', { yPercent: -66.666, duration: 1, ease: 'power1.inOut' }, 3)
+          .to(imgs[1], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, 3)
+          .to(imgs[2], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, 3)
+          .to(imgs[0], { opacity: 0, duration: 0.5, ease: 'none' }, 3)
+          .set(imgs[0], { xPercent: 70, zIndex: 1 }, 3.5)
+          .to(imgs[0], { opacity: 0.4, duration: 0.5, ease: 'none' }, 3.5);
+          
+        // FASE 4: Pausa Final (Viendo "Conversión")
+        tl.to({}, { duration: 1 }, 4);
+      }
+    });
+    // Párrafo con Scrub al hacer scroll
+    const paragraphLines = document.querySelectorAll('.about-paragraph');
+    gsap.fromTo(paragraphLines, 
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', scrollTrigger: {
+        trigger: '.about-paragraph',
+        start: "top 80%",
+      }}
+    );
+    
+    // Animación de la métrica
+    gsap.fromTo('.about-metric', 
+      { scale: 0.8, opacity: 0, rotate: -2, y: 50 },
+      { scale: 1, opacity: 1, rotate: 0, y: 0, duration: 1.5, ease: "elastic.out(1, 0.7)", scrollTrigger: {
+        trigger: '.about-metric',
+        start: "top 85%"
+      }}
+    );
+    
+    gsap.fromTo('.about-metric-text', 
+      { opacity: 0, x: -20 },
+      { opacity: 1, x: 0, duration: 1, delay: 0.5, scrollTrigger: {
+        trigger: '.about-metric',
+        start: "top 85%"
+      }}
+    );
+  }
+</script>

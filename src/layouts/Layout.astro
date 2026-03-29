@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Nextzy Agency - Landing Page" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>{title}</title>
+  </head>
+  <body class="bg-nextzy-black text-nextzy-gray-300 font-sora antialiased overflow-x-hidden selection:bg-nextzy-purple selection:text-white flex flex-col min-h-screen relative">
+    
+    <!-- Global Mouse Glow -->
+    <div id="mouse-glow" class="fixed inset-0 pointer-events-none transition-opacity duration-300 opacity-0 mix-blend-screen z-0" style="background: radial-gradient(circle 350px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(138, 79, 255, 0.15), transparent 80%);"></div>
+
+    <main class="w-full relative z-10">
+      <slot />
+    </main>
+
+    <script>
+      // Actualiza las coordenadas CSS para el foco de luz principal
+      const glow = document.getElementById('mouse-glow');
+      
+      window.addEventListener('mousemove', (e) => {
+        if (glow) {
+          glow.style.opacity = '1';
+          // Se usan coordenadas del cliente (relativas a la ventana) porque el div es 'fixed'
+          glow.style.setProperty('--mouse-x', `${e.clientX}px`);
+          glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+        }
+      });
+      
+      // Apagar la luz silenciosamente si el mouse sale del navegador
+      document.addEventListener('mouseleave', () => {
+        if (glow) glow.style.opacity = '0';
+      });
+    </script>
+  </body>
+</html>

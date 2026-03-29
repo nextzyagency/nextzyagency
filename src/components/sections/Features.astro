@@ -1,0 +1,214 @@
+---
+// Features.astro
+import Star from "../ui/Star.astro";
+---
+
+<section
+  id="features"
+  class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden"
+>
+  <div class="absolute top-0 right-10 opacity-30">
+    <Star class="w-12 h-12 text-nextzy-purple-light opacity-50" />
+  </div>
+  <div class="absolute bottom-10 left-10 opacity-30">
+    <Star class="w-8 h-8 text-nextzy-gray-500 opacity-50" />
+  </div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto flex flex-col">
+    <!-- Encabezado -->
+    <div class="text-center mb-16 md:mb-24">
+      <h2
+        class="text-4xl md:text-5xl lg:text-7xl font-sans font-black tracking-tighter text-nextzy-white uppercase leading-[1.1] mb-6 feature-title"
+      >
+        Por qué los negocios crecen <br class="hidden md:block" /> con <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+          >Nextzy agency</span
+        >
+      </h2>
+    </div>
+
+    <!-- Cards -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full feature-cards"
+    >
+      <!-- Card 1 Wrapper -->
+      <div class="card-item relative h-full">
+        <div
+          class="card-up bg-[#12161f] border border-white border-opacity-5 rounded-3xl p-8 lg:p-10 flex flex-col gap-6 hover:bg-[#151a25] transition-colors duration-500 h-full will-change-transform"
+        >
+          <div
+            class="w-14 h-14 rounded-2xl bg-nextzy-purple/20 flex items-center justify-center border border-nextzy-purple-light/30 text-nextzy-purple-light"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <!-- Reloj - Ahorro de tiempo -->
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-3 sm:gap-6">
+            <h3
+              class="text-xl md:text-2xl font-bold text-nextzy-white uppercase tracking-tight"
+            >
+              Ahorro de tiempo y recursos
+            </h3>
+            <p
+              class="text-nextzy-gray-400 font-sora text-sm md:text-base leading-relaxed"
+            >
+              Optimizamos cada proceso operativo a través de soluciones
+              automatizadas, permitiéndote enfocarte exclusivamente en lo que
+              mejor sabes hacer: hacer crecer tu negocio.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 Wrapper -->
+      <div class="card-item relative h-full md:translate-y-8">
+        <div
+          class="card-down bg-[#12161f] border border-white border-opacity-5 rounded-3xl p-8 lg:p-10 flex flex-col gap-6 hover:bg-[#151a25] transition-colors duration-500 h-full will-change-transform"
+        >
+          <div
+            class="w-14 h-14 rounded-2xl bg-nextzy-purple/20 flex items-center justify-center border border-nextzy-purple-light/30 text-nextzy-purple-light"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <!-- Escudo - Confianza -->
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+              ></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-3">
+            <h3
+              class="text-xl md:text-2xl font-bold text-nextzy-white uppercase tracking-tight"
+            >
+              Aumento de confianza en los clientes
+            </h3>
+            <p
+              class="text-nextzy-gray-400 font-sora text-sm md:text-base leading-relaxed"
+            >
+              Diseñamos interfaces que transmiten autoridad y profesionalismo
+              desde el primer segundo, convirtiendo visitantes esporádicos en
+              compradores fidelizados y recurrentes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 Wrapper -->
+      <div class="card-item relative h-full">
+        <div
+          class="card-up bg-[#12161f] border border-white border-opacity-5 rounded-3xl p-8 lg:p-10 flex flex-col gap-6 hover:bg-[#151a25] transition-colors duration-500 h-full will-change-transform"
+        >
+          <div
+            class="w-14 h-14 rounded-2xl bg-nextzy-purple/20 flex items-center justify-center border border-nextzy-purple-light/30 text-nextzy-purple-light"
+          >
+            <svg
+              class="w-7 h-7"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <!-- Tendencia arriba - Largo Plazo -->
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+          </div>
+          <div class="flex flex-col gap-3">
+            <h3
+              class="text-xl md:text-2xl font-bold text-nextzy-white uppercase tracking-tight"
+            >
+              Acompañamiento a largo plazo
+            </h3>
+            <p
+              class="text-nextzy-gray-400 font-sora text-sm md:text-base leading-relaxed"
+            >
+              No solo entregamos una estructura funcional y desaparecemos.
+              Evolucionamos a tu lado, adaptando tu presencia digital a las
+              nuevas exigencias y tecnologías del mercado.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animación Título Entrada
+    gsap.from(".feature-title", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".feature-title",
+        start: "top 80%",
+      },
+    });
+
+    // Animación Cards Entrada General
+    gsap.from(".card-item", {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".feature-cards",
+        start: "top 85%",
+      },
+    });
+
+    // Parallax Efecto Bidireccional Continuo al Scrollear
+    let mm = gsap.matchMedia();
+
+    // Solo se aplica en pantallas desde 768px en adelante (tablets y desktop)
+    mm.add("(min-width: 768px)", () => {
+      gsap.to(".card-up", {
+        y: -70, // Las de los lados suben 70px
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#features",
+          start: "top bottom", // Inicia en cuanto se asoma la sección
+          end: "bottom top", // Termina cuando la sección sale
+          scrub: 1,
+        },
+      });
+
+      gsap.to(".card-down", {
+        y: 70, // La del centro baja 70px
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#features",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+    });
+  });
+</script>

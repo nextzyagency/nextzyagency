@@ -1,0 +1,115 @@
+---
+// Cta.astro
+import Star from '../ui/Star.astro';
+---
+<section id="contacto" class="relative w-full py-32 flex flex-col items-center px-6 overflow-hidden">
+  
+  <Star class="top-20 left-20 w-8 h-8 opacity-40" />
+  <Star class="bottom-40 right-[15%] w-12 h-12 opacity-20 text-nextzy-purple" />
+
+  <div class="cta-container w-full max-w-4xl mx-auto glass-floating rounded-[2.5rem] p-10 md:p-16 flex flex-col items-center text-center relative z-10 border border-nextzy-gray-700/50 shadow-2xl">
+    <div class="absolute inset-0 bg-gradient-to-b from-nextzy-purple/5 to-transparent rounded-[2.5rem] pointer-events-none"></div>
+    
+    <h2 class="text-3xl md:text-4xl lg:text-6xl font-black text-white mb-6 tracking-tight z-10 w-full text-center leading-[1.1]">
+      Construyamos tu web <br/> <span class="font-drama italic text-nextzy-purple-light normal-case pr-4">ideal</span>
+    </h2>
+    <p class="text-lg md:text-xl text-nextzy-gray-400 font-medium max-w-2xl mb-12 z-10">
+      Envía una solicitud y comencemos a darle la confianza que tus clientes se merecen. Nuestro equipo se encargará de todo.
+    </p>
+
+    <form class="w-full max-w-xl flex flex-col gap-8 text-left z-10" id="whatsapp-form">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="relative group">
+          <label for="name" class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase">Tu Nombre</label>
+          <input type="text" id="name" required class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer" placeholder="Ej. Juan Pérez" />
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"></span>
+        </div>
+
+        <div class="relative group">
+          <label for="company" class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase">Agencia / Empresa</label>
+          <input type="text" id="company" required class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer" placeholder="Ej. Acme Corp" />
+          <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"></span>
+          <span class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"></span>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <label for="url" class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase">URL de cuenta de Instagram (opcional)</label>
+        <input type="text" id="url" class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer" placeholder="https://instagram.com/..." />
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"></span>
+        <span class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"></span>
+      </div>
+
+      <div class="relative group mb-4">
+        <label for="message" class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase">Mensaje</label>
+        <textarea id="message" required class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer resize-none min-h-[100px]" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"></span>
+        <span class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"></span>
+      </div>
+
+      <button type="submit" class="cta-button relative w-full bg-nextzy-white text-nextzy-black font-bold text-lg py-4 rounded-xl overflow-hidden group shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+        <span class="relative z-10 flex items-center justify-center gap-2 group-hover:text-white transition-colors duration-300">
+          Enviar mensaje vía WhatsApp
+          <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </span>
+        <div class="absolute inset-0 bg-nextzy-purple transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100 z-0"></div>
+      </button>
+    </form>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const container = document.querySelector('.cta-container');
+  if (container) {
+    gsap.fromTo(container, 
+      { scale: 0.95, opacity: 0, y: 50 },
+      { scale: 1, opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: {
+        trigger: container,
+        start: 'top 85%'
+      }}
+    );
+  }
+
+  // Botón Magnético
+  const btn = document.querySelector('.cta-button') as HTMLElement;
+  if(btn) {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      gsap.to(btn, { x: x * 0.15, y: y * 0.15, duration: 0.3, ease: 'power2.out' });
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.3)' });
+    });
+  }
+
+  // Submit de WhatsApp
+  const form = document.getElementById('whatsapp-form') as HTMLFormElement;
+  if(form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const company = (document.getElementById('company') as HTMLInputElement).value;
+      const url = (document.getElementById('url') as HTMLInputElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+      
+      const numero = "1234567890"; // Reemplazar con el número de teléfono real
+      const text = `Hola Nextzy Agency. Mi nombre es ${name} de ${company}.
+Instagram: ${url || 'No especificado'}
+
+Mensaje:
+${message}`;
+      
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(text)}`, '_blank');
+    });
+  }
+</script>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  class?: string;
+  style?: string;
+}
+
+const { class: className = "", style = "" } = Astro.props;
+---
+<svg class={`absolute pointer-events-none text-nextzy-gray-500 will-change-transform ${className}`} style={style} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 0L14 10L24 12L14 14L12 24L10 14L0 12L10 10L12 0Z" fill="currentColor"/>
+</svg>

@@ -1,0 +1,107 @@
+---
+// Footer.astro
+---
+
+<footer
+  id="footer-section"
+  class="relative w-full pt-20 pb-8 px-6 border-t border-nextzy-gray-700 bg-[#0a0d14]/50 backdrop-blur-md"
+>
+  <div class="max-w-6xl mx-auto w-full relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+      <div class="footer-item flex flex-col gap-4">
+        <div
+          class="font-bold text-2xl tracking-tight select-none text-white mb-2"
+        >
+          nextzy <span class="text-nextzy-purple">agency</span>
+        </div>
+        <p class="text-nextzy-gray-400 font-medium">
+          Trabajando de manera global.
+        </p>
+        <p class="text-nextzy-gray-400 font-medium">
+          Aceptando nuevos proyectos.
+        </p>
+      </div>
+
+      <div class="footer-item flex flex-col gap-4 md:items-center">
+        <h4 class="text-white font-mono uppercase text-sm mb-2 opacity-50">
+          Contacto
+        </h4>
+        <a
+          href="mailto:nextzyagency@gmail.com"
+          class="text-xl md:text-2xl text-nextzy-gray-300 hover:text-white transition-colors underline decoration-nextzy-gray-700 hover:decoration-nextzy-purple-light underline-offset-8"
+        >
+          nextzyagency@gmail.com
+        </a>
+      </div>
+
+      <div class="footer-item flex flex-col gap-4 md:items-end">
+        <h4 class="text-white font-mono uppercase text-sm mb-2 opacity-50">
+          Redes
+        </h4>
+        <nav class="flex flex-col gap-3 items-start md:items-end w-max">
+          <a
+            href="https://www.instagram.com/nextzyautomations/"
+            class="text-nextzy-gray-400 hover:text-white transition-colors text-lg flex items-center gap-2 group"
+          >
+            Instagram <span
+              class="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-nextzy-purple-light"
+              >→</span
+            >
+          </a>
+          <a
+            href="https://github.com/nextzyagency"
+            class="text-nextzy-gray-400 hover:text-white transition-colors text-lg flex items-center gap-2 group"
+          >
+            GitHub <span
+              class="opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0 text-nextzy-purple-light"
+              >→</span
+            >
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div
+      class="footer-base flex flex-col md:flex-row justify-between items-center pt-8 border-t border-nextzy-gray-800 text-sm font-mono text-nextzy-gray-500 gap-4"
+    >
+      <div>© 2026 Nextzy Agency.</div>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-nextzy-gray-300 transition-colors"
+          >Política de Privacidad</a
+        >
+        <span>//</span>
+        <a href="#" class="hover:text-nextzy-gray-300 transition-colors"
+          >Aviso Legal</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const footerSection = document.getElementById("footer-section");
+  if (footerSection) {
+    const items = footerSection.querySelectorAll(".footer-item, .footer-base");
+
+    gsap.fromTo(
+      items,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: footerSection,
+          start: "top 85%",
+        },
+      },
+    );
+  }
+</script>

@@ -1,0 +1,87 @@
+---
+// Hero.astro
+import Star from '../ui/Star.astro';
+---
+<section id="inicio" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden pt-24 pb-12">
+  
+  <!-- Contenedor general transparente para heredar el Grid de Body -->
+
+  <!-- Sweep Line (Curva Morada) -->
+  <div class="absolute bottom-0 left-0 w-full h-[30vh] md:h-[50vh] z-0 overflow-hidden pointer-events-none flex items-end justify-center">
+    <div class="w-[150%] md:w-[120%] h-[150%] md:h-[200%] border-t-[3px] border-[#8A4FFF] rounded-[100%] absolute top-[50%] -translate-y-[20%] opacity-80 shadow-[0_-10px_60px_rgba(138,79,255,0.4)]"></div>
+  </div>
+
+  <!-- Top Right Spotlight & Rays -->
+  <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 blur-[100px] rounded-full pointer-events-none z-0 translate-x-1/4 -translate-y-1/4"></div>
+  <div class="absolute -top-[10%] right-[15%] w-[150px] h-[120%] bg-gradient-to-b from-white/10 to-transparent rotate-[35deg] blur-xl origin-top pointer-events-none z-0"></div>
+
+  <!-- Bottom Left Dots UI Pattern -->
+  <div class="absolute bottom-16 left-12 z-0 opacity-30 flex flex-wrap w-[80px] gap-3 pointer-events-none hidden md:flex">
+    {Array.from({ length: 20 }).map(() => (
+      <div class="w-1.5 h-1.5 bg-gray-500 rounded-full"></div>
+    ))}
+  </div>
+
+  <!-- Ocurrencias de Estrella -->
+  <Star class="top-32 left-10 w-6 h-6 opacity-30 hidden md:block" />
+  <Star class="bottom-12 right-12 w-8 h-8 opacity-40 text-[#a1a1aa] hidden md:block" />
+
+  <!-- Main Content Layout -->
+  <div class="relative z-20 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-6 h-full mt-10 md:mt-20">
+    
+    <!-- Lado Izquierdo: Textos -->
+    <div class="flex flex-col items-start text-left max-w-lg z-20">
+      <h1 class="hero-title text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.1] tracking-tight mb-6 text-[#e2e8f0]">
+        <span class="block whitespace-nowrap">Impulsa tu</span>
+        <span class="block whitespace-nowrap text-nextzy-purple-light">Presencia Digital</span>
+      </h1>
+      
+      <p class="hero-subtitle text-base md:text-lg text-gray-400 max-w-md mb-10 leading-relaxed font-medium">
+        Convertimos ideas en experiencias digitales que generan resultados. Tu viaje hacia la excelencia comienza aquí.
+      </p>
+      
+      <a href="#contacto" class="hero-cta bg-[#8A4FFF] hover:bg-[#7b42ea] text-white text-base md:text-lg font-medium py-3 px-8 mx-0 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_25px_rgba(138,79,255,0.4)]">
+        Comenzar
+      </a>
+    </div>
+
+    <!-- Lado Derecho: Imagen de Laptop -->
+    <div class="flex justify-center lg:justify-end lg:items-center relative w-full h-full z-10 pointer-events-none">
+      <div class="hero-image-wrapper relative w-[150%] sm:w-[160%] md:w-[180%] lg:w-[200%] xl:w-[220%] lg:-mr-32 xl:-mr-48 flex justify-center lg:justify-end">
+        <img 
+          src="/imagenes/hero/Laptop_with_minimalist_202603251350-Photoroom.png_202603251359-Photoroom.png" 
+          alt="Laptop Nextzy" 
+          class="hero-image relative w-full h-auto object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.8)]"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+
+  const title = document.querySelector('.hero-title');
+  if (title) {
+    gsap.fromTo('.hero-title span', 
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
+    );
+
+    gsap.fromTo('.hero-subtitle', 
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power2.out', delay: 0.8 }
+    );
+
+    gsap.fromTo('.hero-cta', 
+      { scale: 0.9, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', delay: 1.1 }
+    );
+
+    gsap.fromTo('.hero-image',
+      { x: 80, opacity: 0, scale: 0.9 },
+      { x: 0, opacity: 1, scale: 1, duration: 1.5, ease: 'power3.out', delay: 0.6 }
+    );
+  }
+</script>

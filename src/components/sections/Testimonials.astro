@@ -1,0 +1,351 @@
+---
+// Testimonials.astro (Ahora Casos de Estudio)
+import Star from "../ui/Star.astro";
+---
+
+<section
+  id="casos"
+  class="relative w-full h-[120dvh] min-h-[700px] flex flex-col items-center justify-center overflow-hidden"
+>
+  <div
+    class="w-full max-w-7xl mx-auto px-6 mb-0 flex flex-col justify-start relative z-10"
+  >
+    <div
+      class="text-nextzy-purple-light font-mono tracking-widest uppercase text-xs font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm w-max pointer-events-none"
+    >
+      // Nuestros Casos
+    </div>
+    <h2
+      class="text-4xl md:text-5xl lg:text-7xl font-sans font-black tracking-tighter text-nextzy-white uppercase py-2"
+    >
+      Historias de <span
+        class="filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+        ><span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark"
+          >Éxito.</span
+        ></span
+      >
+    </h2>
+  </div>
+
+  <div
+    class="relative w-full group/slider flex items-center justify-center max-w-[100vw]"
+  >
+    <!-- Controles superpuestos (Desktop + Movil unificados) -->
+    <button
+      id="prev-btn"
+      class="absolute left-4 md:left-8 xl:left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#12161f]/90 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:scale-110 hover:bg-nextzy-purple hover:border-nextzy-purple transition-all duration-300 data-[hidden=true]:opacity-0 data-[hidden=true]:scale-90 data-[hidden=true]:pointer-events-none"
+    >
+      <svg
+        class="w-6 h-6 md:w-8 md:h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path></svg
+      >
+    </button>
+
+    <button
+      id="next-btn"
+      class="absolute right-4 md:right-8 xl:right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#12161f]/90 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:scale-110 hover:bg-nextzy-purple hover:border-nextzy-purple transition-all duration-300 data-[hidden=true]:opacity-0 data-[hidden=true]:scale-90 data-[hidden=true]:pointer-events-none"
+    >
+      <svg
+        class="w-6 h-6 md:w-8 md:h-8"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path></svg
+      >
+    </button>
+
+    <!-- Pista de Slider -->
+    <div
+      id="slider-track"
+      class="flex gap-6 md:gap-12 px-6 md:px-[10vw] overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth py-28 w-full"
+    >
+      <!-- Card 1: Punto Crochet -->
+      <div
+        class="relative snap-center shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw]"
+      >
+        <div
+          class="absolute inset-0 bg-nextzy-purple/20 md:bg-nextzy-purple/30 blur-[60px] md:blur-[100px] -z-10 rounded-[40px] opacity-70"
+        >
+        </div>
+        <div
+          class="h-[65vh] md:h-[55vh] border border-white/5 rounded-[32px] md:rounded-[40px] bg-[#12161f] shadow-2xl flex flex-col md:flex-row overflow-hidden group"
+        >
+          <div
+            class="w-full md:w-1/2 h-[45%] md:h-full bg-nextzy-gray-900 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-nextzy-purple/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"
+            >
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
+              alt="Punto Crochet"
+              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+            />
+          </div>
+          <div
+            class="w-full md:w-1/2 h-[55%] md:h-[100%] flex flex-col justify-center p-6 md:p-10 lg:p-14 relative bg-[#12161f]"
+          >
+            <Star
+              class="absolute top-8 right-8 w-6 h-6 text-nextzy-purple-light opacity-20 hidden md:block"
+            />
+            <div
+              class="text-nextzy-purple-light font-mono text-xs uppercase tracking-widest mb-3 md:mb-5 border border-nextzy-purple/20 rounded-full py-1 px-3 w-fit"
+            >
+              E-Commerce
+            </div>
+            <h3
+              class="text-3xl md:text-5xl font-drama italic text-nextzy-white mb-3 md:mb-5"
+            >
+              Punto Crochet
+            </h3>
+            <p
+              class="text-nextzy-gray-400 text-[15px] md:text-lg leading-relaxed mb-6 md:mb-8 line-clamp-4 md:line-clamp-none"
+            >
+              Transformamos su tienda online de manualidades en una experiencia
+              premium. Mejoramos drásticamente el flujo de compra y la velocidad
+              de carga visual.
+            </p>
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/50 hover:bg-nextzy-purple text-nextzy-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 w-max shadow-[0_0_15px_rgba(138,79,255,0.15)] hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+            >
+              Ver más
+              <svg
+                class="w-4 h-4 mt-[-1px]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Oralproface -->
+      <div
+        class="relative snap-center shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw]"
+      >
+        <div
+          class="absolute inset-0 bg-nextzy-purple/20 md:bg-nextzy-purple/30 blur-[60px] md:blur-[100px] -z-10 rounded-[40px] opacity-70"
+        >
+        </div>
+        <div
+          class="h-[65vh] md:h-[55vh] border border-white/5 rounded-[32px] md:rounded-[40px] bg-[#12161f] shadow-2xl flex flex-col md:flex-row overflow-hidden group"
+        >
+          <div
+            class="w-full md:w-1/2 h-[45%] md:h-full bg-nextzy-gray-900 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-nextzy-purple/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"
+            >
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?q=80&w=1000&auto=format&fit=crop"
+              alt="Oralproface"
+              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+            />
+          </div>
+          <div
+            class="w-full md:w-1/2 h-[55%] md:h-[100%] flex flex-col justify-center p-6 md:p-10 lg:p-14 relative bg-[#12161f]"
+          >
+            <Star
+              class="absolute top-8 right-8 w-6 h-6 text-nextzy-purple-light opacity-20 hidden md:block"
+            />
+            <div
+              class="text-nextzy-purple-light font-mono text-xs uppercase tracking-widest mb-3 md:mb-5 border border-nextzy-purple/20 rounded-full py-1 px-3 w-fit"
+            >
+              Odontología
+            </div>
+            <h3
+              class="text-3xl md:text-5xl font-drama italic text-nextzy-white mb-3 md:mb-5"
+            >
+              Oralproface
+            </h3>
+            <p
+              class="text-nextzy-gray-400 text-[15px] md:text-lg leading-relaxed mb-6 md:mb-8 line-clamp-4 md:line-clamp-none"
+            >
+              Reposicionamos su presencia médica con una landing page
+              visualmente impecable. Su sitio transmite modernidad, higiene
+              clínica y confianza premium instantánea.
+            </p>
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/50 hover:bg-nextzy-purple text-nextzy-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 w-max shadow-[0_0_15px_rgba(138,79,255,0.15)] hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+            >
+              Ver más
+              <svg
+                class="w-4 h-4 mt-[-1px]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Go Essence -->
+      <div
+        class="relative snap-center shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw]"
+      >
+        <div
+          class="absolute inset-0 bg-nextzy-purple/20 md:bg-nextzy-purple/30 blur-[60px] md:blur-[100px] -z-10 rounded-[40px] opacity-70"
+        >
+        </div>
+        <div
+          class="h-[65vh] md:h-[55vh] border border-white/5 rounded-[32px] md:rounded-[40px] bg-[#12161f] shadow-2xl flex flex-col md:flex-row overflow-hidden group"
+        >
+          <div
+            class="w-full md:w-1/2 h-[45%] md:h-full bg-nextzy-gray-900 relative overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-nextzy-purple/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"
+            >
+            </div>
+            <img
+              src="https://images.unsplash.com/photo-1615397323171-e945c1171ade?q=80&w=1000&auto=format&fit=crop"
+              alt="Go Essence"
+              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+            />
+          </div>
+          <div
+            class="w-full md:w-1/2 h-[55%] md:h-[100%] flex flex-col justify-center p-6 md:p-10 lg:p-14 relative bg-[#12161f]"
+          >
+            <Star
+              class="absolute top-8 right-8 w-6 h-6 text-nextzy-purple-light opacity-20 hidden md:block"
+            />
+            <div
+              class="text-nextzy-purple-light font-mono text-xs md:text-sm uppercase tracking-widest mb-3 md:mb-5 border border-nextzy-purple/20 rounded-full py-1 px-3 w-fit"
+            >
+              Bienestar y Belleza
+            </div>
+            <h3
+              class="text-3xl md:text-5xl font-drama italic text-nextzy-white mb-3 md:mb-5"
+            >
+              Go Essence
+            </h3>
+            <p
+              class="text-nextzy-gray-400 text-[15px] md:text-lg leading-relaxed mb-6 md:mb-8 line-clamp-4 md:line-clamp-none"
+            >
+              Creamos un entorno inmersivo que evoca tranquilidad y pureza.
+              Optimizamos su catálogo gráfico de aceites esenciales elevando el
+              ticket promedio de compra.
+            </p>
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/50 hover:bg-nextzy-purple text-nextzy-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 w-max shadow-[0_0_15px_rgba(138,79,255,0.15)] hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+            >
+              Ver más
+              <svg
+                class="w-4 h-4 mt-[-1px]"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Para esconder el scrollbar nativo pero mantener la funcionalidad de swipe */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("slider-track");
+    const btnNext = document.getElementById("next-btn");
+    const btnPrev = document.getElementById("prev-btn");
+
+    if (track && btnNext && btnPrev) {
+      const updateButtonsState = () => {
+        // Tolerancia de 10px para considerar límites con zoom/rounding pixels
+        if (track.scrollLeft <= 10) {
+          btnPrev.setAttribute("data-hidden", "true");
+        } else {
+          btnPrev.removeAttribute("data-hidden");
+        }
+
+        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+          btnNext.setAttribute("data-hidden", "true");
+        } else {
+          btnNext.removeAttribute("data-hidden");
+        }
+      };
+
+      track.addEventListener("scroll", updateButtonsState, { passive: true });
+      window.addEventListener("resize", updateButtonsState);
+      updateButtonsState(); // Check immediately on load
+
+      const getScrollAmount = () => {
+        const vw = Math.max(
+          document.documentElement.clientWidth || 0,
+          window.innerWidth || 0,
+        );
+        return vw < 768 ? vw * 0.85 : vw * 0.6;
+      };
+
+      const goNext = () =>
+        track.scrollBy({ left: getScrollAmount() + 24, behavior: "smooth" });
+      const goPrev = () =>
+        track.scrollBy({ left: -(getScrollAmount() + 24), behavior: "smooth" });
+
+      btnNext.addEventListener("click", goNext);
+      btnPrev.addEventListener("click", goPrev);
+
+      // Entrada por scroll suave
+      gsap.from("#casos", {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#casos",
+          start: "top 85%",
+        },
+      });
+    }
+  });
+</script>
