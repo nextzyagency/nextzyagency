@@ -3,6 +3,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://nextzyagency.github.io', 
-  base: '/nextzyagency',             
+  base: '/',             
   integrations: [tailwind()],
 });
