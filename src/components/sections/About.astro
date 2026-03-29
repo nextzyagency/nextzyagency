@@ -93,7 +93,7 @@ import Star from '../ui/Star.astro';
 
     document.addEventListener('DOMContentLoaded', () => {
       // ---- Carrusel de Imágenes 3D al Scrollear ----
-      const imgs = gsap.utils.toArray('.img-card');
+      const imgs = gsap.utils.toArray('.img-card') as HTMLElement[];
       
       if (imgs.length === 3) {
         // Estado Inicial
