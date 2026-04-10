@@ -2,52 +2,192 @@
 import '../styles/global.css';
 
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
+  canonicalURL?: string;
+  ogImage?: string;
 }
 
-const { title, description = "Nextzy Agency - Landing Page" } = Astro.props;
+const {
+  title = "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
+  description = "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
+  canonicalURL = Astro.url.href,
+  ogImage = "/og-image.jpg",
+} = Astro.props;
+
+const schemaOrg = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nextzyagency.github.io/#organization",
+      "name": "Nextzy Agency",
+      "url": "https://nextzyagency.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nextzyagency.github.io/logos/nextzy-logo.svg"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-305-248-7564",
+        "contactType": "customer service",
+        "availableLanguage": "Spanish"
+      },
+      "sameAs": [
+        "https://www.instagram.com/nextzyautomations/",
+        "https://github.com/nextzyagency"
+      ],
+      "description": "Agencia de diseño web profesional especializada en landing pages, webs corporativas y e-commerce optimizados para SEO y conversión.",
+      "areaServed": "América Latina",
+      "knowsAbout": ["Diseño Web", "SEO", "Landing Pages", "E-commerce", "Desarrollo Frontend"]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://nextzyagency.github.io/#webpage",
+      "url": "https://nextzyagency.github.io/",
+      "name": "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
+      "description": "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
+      "inLanguage": "es",
+      "isPartOf": { "@id": "https://nextzyagency.github.io/#organization" },
+      "about": { "@id": "https://nextzyagency.github.io/#organization" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://nextzyagency.github.io/#services",
+      "name": "Diseño y Desarrollo Web",
+      "provider": { "@id": "https://nextzyagency.github.io/#organization" },
+      "serviceType": ["Landing Page", "Página Web Corporativa", "E-Commerce"],
+      "description": "Creamos landing pages, webs corporativas y tiendas online con diseño profesional, SEO integrado y enfoque en la conversión de clientes."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://nextzyagency.github.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo tarda en estar lista mi página web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El tiempo varía según el tipo de proyecto. Una landing page profesional puede estar lista en 5 a 7 días hábiles. Una web corporativa con múltiples secciones toma entre 10 y 15 días. Siempre trabajamos con plazos claros y etapas de revisión."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Mi página web va a aparecer en Google?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Todas nuestras páginas incluyen SEO técnico integrado desde el primer día: estructura semántica de HTML, meta tags optimizados, velocidad de carga rápida y contenido orientado a las búsquedas de tus clientes potenciales."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Necesito saber de tecnología para manejar mi sitio web?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Nos encargamos de todo: hosting, dominio, seguridad SSL y mantenimiento. Tú solo te enfocas en tu negocio. Además, te acompañamos a largo plazo para cualquier actualización o mejora que necesites."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué diferencia a Nextzy Agency de otras agencias?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nos especializamos en páginas web optimizadas para convertir visitantes en clientes reales. No solo diseñamos bonito: cada sección, título y llamada a la acción está pensada estratégicamente para generar confianza y ventas. Además, ofrecemos acompañamiento continuo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Tienen experiencia con mi tipo de negocio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hemos trabajado con odontologías, centros estéticos, tiendas online, negocios de bienestar y empresas de servicios. Nuestros casos de estudio demuestran resultados reales en múltiples industrias."
+          }
+        }
+      ]
+    }
+  ]
+});
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+
+    <!-- SEO Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Nextzy Agency" />
+    <meta name="keywords" content="diseño web profesional, agencia web, landing page, página web para negocios, desarrollo web, SEO, posicionamiento web, pagina web que vende, web corporativa, ecommerce" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`https://nextzyagency.github.io${ogImage}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nextzy Agency - Diseño Web Profesional" />
+    <meta property="og:site_name" content="Nextzy Agency" />
+    <meta property="og:locale" content="es_CO" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`https://nextzyagency.github.io${ogImage}`} />
+    <meta name="twitter:image:alt" content="Nextzy Agency - Diseño Web Profesional" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect para performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts con display=swap para no bloquear render -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Instrument+Serif:ital@0;1&family=Sora:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={schemaOrg} />
   </head>
   <body class="bg-nextzy-black text-nextzy-gray-300 font-sora antialiased overflow-x-hidden selection:bg-nextzy-purple selection:text-white flex flex-col min-h-screen relative">
-    
+
     <!-- Global Mouse Glow -->
-    <div id="mouse-glow" class="fixed inset-0 pointer-events-none transition-opacity duration-300 opacity-0 mix-blend-screen z-0" style="background: radial-gradient(circle 350px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(138, 79, 255, 0.15), transparent 80%);"></div>
+    <div
+      id="mouse-glow"
+      aria-hidden="true"
+      class="fixed inset-0 pointer-events-none transition-opacity duration-300 opacity-0 mix-blend-screen z-0"
+      style="background: radial-gradient(circle 350px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(138, 79, 255, 0.15), transparent 80%);"
+    ></div>
 
     <main class="w-full relative z-10">
       <slot />
     </main>
 
     <script>
-      // Actualiza las coordenadas CSS para el foco de luz principal
       const glow = document.getElementById('mouse-glow');
-      
+
       window.addEventListener('mousemove', (e) => {
         if (glow) {
           glow.style.opacity = '1';
-          // Se usan coordenadas del cliente (relativas a la ventana) porque el div es 'fixed'
           glow.style.setProperty('--mouse-x', `${e.clientX}px`);
           glow.style.setProperty('--mouse-y', `${e.clientY}px`);
         }
       });
-      
-      // Apagar la luz silenciosamente si el mouse sale del navegador
+
       document.addEventListener('mouseleave', () => {
         if (glow) glow.style.opacity = '0';
       });

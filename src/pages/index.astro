@@ -7,10 +7,14 @@ import Services from '../components/sections/Services.astro';
 import Features from '../components/sections/Features.astro';
 import Testimonials from '../components/sections/Testimonials.astro';
 import Cta from '../components/sections/Cta.astro';
+import Faq from '../components/sections/Faq.astro';
 import Footer from '../components/sections/Footer.astro';
 ---
 
-<Layout title="Nextzy Agency - Desarrollo Frontend">
+<Layout
+  title="Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes"
+  description="Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google."
+>
   <Header />
   <main class="w-full">
     <Hero />
@@ -19,6 +23,7 @@ import Footer from '../components/sections/Footer.astro';
     <Features />
     <Testimonials />
     <Cta />
+    <Faq />
   </main>
   <Footer />
 </Layout>

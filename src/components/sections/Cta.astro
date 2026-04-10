@@ -21,9 +21,9 @@ import Star from "../ui/Star.astro";
     <h2
       class="text-3xl md:text-4xl lg:text-6xl font-black text-white mb-6 tracking-tight z-10 w-full text-center leading-[1.1]"
     >
-      Construyamos tu web <br />
+      Consigue tu página web <br />
       <span class="font-drama italic text-nextzy-purple-light normal-case pr-4"
-        >ideal</span
+        >profesional</span
       >
     </h2>
     <p
@@ -36,6 +36,8 @@ import Star from "../ui/Star.astro";
     <form
       class="w-full max-w-xl flex flex-col gap-8 text-left z-10"
       id="whatsapp-form"
+      aria-label="Formulario de contacto - Solicitar diseño web profesional"
+      novalidate
     >
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="relative group">
@@ -47,7 +49,9 @@ import Star from "../ui/Star.astro";
           <input
             type="text"
             id="name"
+            name="name"
             required
+            autocomplete="name"
             class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
             placeholder="Ej. Juan Pérez"
           />
@@ -68,7 +72,9 @@ import Star from "../ui/Star.astro";
           <input
             type="text"
             id="company"
+            name="company"
             required
+            autocomplete="organization"
             class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
             placeholder="Ej. Acme Corp"
           />
@@ -88,8 +94,10 @@ import Star from "../ui/Star.astro";
           >URL de cuenta de Instagram (opcional)</label
         >
         <input
-          type="text"
+          type="url"
           id="url"
+          name="instagram_url"
+          autocomplete="url"
           class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
           placeholder="https://instagram.com/..."
         />
@@ -109,6 +117,7 @@ import Star from "../ui/Star.astro";
         >
         <textarea
           id="message"
+          name="message"
           required
           class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer resize-none min-h-[100px]"
           placeholder="Cuéntanos sobre tu proyecto..."></textarea>

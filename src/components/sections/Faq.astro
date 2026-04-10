@@ -1,0 +1,203 @@
+---
+// Faq.astro
+import Star from '../ui/Star.astro';
+
+const faqs = [
+  {
+    id: 'faq-1',
+    question: '¿Cuánto tiempo tarda en estar lista mi página web profesional?',
+    answer: 'El tiempo varía según el tipo de proyecto. Una landing page profesional puede estar lista en 5 a 7 días hábiles. Una web corporativa con múltiples secciones toma entre 10 y 15 días. Siempre trabajamos con plazos claros y etapas de revisión para que estés al tanto de cada avance.'
+  },
+  {
+    id: 'faq-2',
+    question: '¿Mi página web va a aparecer en Google con el diseño web que crean?',
+    answer: 'Sí. Todas nuestras páginas web incluyen SEO técnico integrado desde el primer día: estructura semántica de HTML, meta tags optimizados, velocidad de carga rápida y contenido orientado a las búsquedas de tus clientes potenciales. Publicamos en Google Search Console y seguimos las mejores prácticas de posicionamiento web.'
+  },
+  {
+    id: 'faq-3',
+    question: '¿Necesito saber de tecnología para manejar mi sitio web?',
+    answer: 'No. Nos encargamos de todo: hosting, dominio, certificado de seguridad SSL y mantenimiento continuo. Tú solo te enfocas en tu negocio. Además, te acompañamos a largo plazo para cualquier actualización, ajuste de contenido o mejora que necesites.'
+  },
+  {
+    id: 'faq-4',
+    question: '¿Qué diferencia a Nextzy Agency de otras agencias de diseño web?',
+    answer: 'Nos especializamos en páginas web que convierten visitantes en clientes reales. No solo diseñamos bonito: cada sección, título y llamada a la acción está pensada estratégicamente para generar confianza y ventas. Además, ofrecemos acompañamiento continuo y no desaparecemos después de la entrega.'
+  },
+  {
+    id: 'faq-5',
+    question: '¿Hacen páginas web para negocios pequeños como odontologías y clínicas estéticas?',
+    answer: 'Sí. Tenemos amplia experiencia creando páginas web para odontologías, centros estéticos, negocios de bienestar, tiendas online y empresas de servicios. Nuestros casos de estudio, como Oralproface y Go Essence, demuestran resultados reales adaptados a cada industria.'
+  }
+];
+---
+
+<section
+  id="preguntas"
+  aria-labelledby="faq-heading"
+  class="relative w-full py-24 md:py-32 px-6 flex flex-col items-center overflow-hidden"
+>
+  <Star class="absolute top-10 right-[20%] w-8 h-8 opacity-15 text-nextzy-purple-light" />
+  <Star class="absolute bottom-20 left-[10%] w-6 h-6 opacity-20" />
+
+  <div class="relative w-full max-w-4xl mx-auto flex flex-col z-10">
+
+    <!-- Encabezado -->
+    <div class="text-center mb-16">
+      <div class="text-nextzy-purple-light font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm">
+        // Preguntas Frecuentes
+      </div>
+      <h2
+        id="faq-heading"
+        class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-nextzy-white uppercase leading-tight faq-title"
+      >
+        Resolvemos tus <br class="hidden md:block" /><span class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]">dudas.</span>
+      </h2>
+      <p class="mt-4 text-nextzy-gray-400 text-lg max-w-xl mx-auto">
+        Todo lo que necesitas saber antes de comenzar tu proyecto de diseño web profesional.
+      </p>
+    </div>
+
+    <!-- Lista FAQ -->
+    <dl class="flex flex-col gap-4 faq-list" itemscope itemtype="https://schema.org/FAQPage">
+
+      {faqs.map((faq) => (
+        <div
+          class="faq-item border border-white/5 rounded-2xl bg-[#12161f] overflow-hidden group"
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
+        >
+          <dt>
+            <button
+              id={`btn-${faq.id}`}
+              aria-expanded="false"
+              aria-controls={`answer-${faq.id}`}
+              class="faq-btn w-full flex items-center justify-between gap-4 p-6 md:p-8 text-left cursor-pointer"
+            >
+              <span
+                itemprop="name"
+                class="text-base md:text-lg font-semibold text-nextzy-white leading-snug group-hover:text-nextzy-purple-light transition-colors duration-300"
+              >
+                {faq.question}
+              </span>
+              <!-- Ícono + / - -->
+              <span
+                aria-hidden="true"
+                class="faq-icon shrink-0 w-8 h-8 rounded-full border border-nextzy-purple/40 bg-nextzy-purple/10 flex items-center justify-center text-nextzy-purple-light transition-transform duration-300"
+              >
+                <svg class="w-4 h-4 faq-icon-plus" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <svg class="w-4 h-4 faq-icon-minus hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                </svg>
+              </span>
+            </button>
+          </dt>
+          <dd
+            id={`answer-${faq.id}`}
+            role="region"
+            aria-labelledby={`btn-${faq.id}`}
+            class="faq-answer max-h-0 overflow-hidden"
+            itemscope
+            itemprop="acceptedAnswer"
+            itemtype="https://schema.org/Answer"
+          >
+            <p
+              itemprop="text"
+              class="px-6 md:px-8 pb-6 md:pb-8 text-nextzy-gray-400 leading-relaxed text-sm md:text-base"
+            >
+              {faq.answer}
+            </p>
+          </dd>
+        </div>
+      ))}
+    </dl>
+
+    <!-- CTA debajo del FAQ -->
+    <div class="mt-12 text-center">
+      <p class="text-nextzy-gray-500 mb-4">¿Tienes otra pregunta? Estamos disponibles para ayudarte.</p>
+      <a
+        href="#contacto"
+        title="Contactar a Nextzy Agency para más información sobre diseño web"
+        class="inline-flex items-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/40 hover:bg-nextzy-purple text-nextzy-white font-semibold px-6 py-3 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+      >
+        Hacer una pregunta
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animación de entrada
+  gsap.from('.faq-title', {
+    opacity: 0,
+    y: 40,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#preguntas',
+      start: 'top 80%',
+    }
+  });
+
+  gsap.from('.faq-item', {
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.faq-list',
+      start: 'top 85%',
+    }
+  });
+
+  // Accordion logic
+  const faqButtons = document.querySelectorAll('.faq-btn');
+
+  faqButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls')!;
+      const answer = document.getElementById(answerId);
+      const iconPlus = btn.querySelector('.faq-icon-plus');
+      const iconMinus = btn.querySelector('.faq-icon-minus');
+
+      // Cerrar todos los otros
+      faqButtons.forEach((otherBtn) => {
+        if (otherBtn !== btn) {
+          const otherId = otherBtn.getAttribute('aria-controls')!;
+          const otherAnswer = document.getElementById(otherId);
+          otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherAnswer) gsap.to(otherAnswer, { maxHeight: 0, duration: 0.4, ease: 'power2.inOut' });
+          const op = otherBtn.querySelector('.faq-icon-plus');
+          const om = otherBtn.querySelector('.faq-icon-minus');
+          if (op) op.classList.remove('hidden');
+          if (om) om.classList.add('hidden');
+        }
+      });
+
+      // Toggle el actual
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        if (answer) gsap.to(answer, { maxHeight: 500, duration: 0.5, ease: 'power2.out' });
+        if (iconPlus) iconPlus.classList.add('hidden');
+        if (iconMinus) iconMinus.classList.remove('hidden');
+      } else {
+        btn.setAttribute('aria-expanded', 'false');
+        if (answer) gsap.to(answer, { maxHeight: 0, duration: 0.4, ease: 'power2.inOut' });
+        if (iconPlus) iconPlus.classList.remove('hidden');
+        if (iconMinus) iconMinus.classList.add('hidden');
+      }
+    });
+  });
+</script>
