@@ -39,7 +39,7 @@ import Star from "../ui/Star.astro";
       aria-label="Formulario de contacto - Solicitar diseño web profesional"
       novalidate
     >
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-4">
         <div class="relative group">
           <label
             for="name"
@@ -54,6 +54,29 @@ import Star from "../ui/Star.astro";
             autocomplete="name"
             class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
             placeholder="Ej. Juan Pérez"
+          />
+          <span
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"
+          ></span>
+          <span
+            class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"
+          ></span>
+        </div>
+
+        <div class="relative group">
+          <label
+            for="email"
+            class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase"
+            >Correo Electrónico</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
+            placeholder="Ej. hola@empresa.com"
           />
           <span
             class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"
@@ -85,28 +108,28 @@ import Star from "../ui/Star.astro";
             class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"
           ></span>
         </div>
-      </div>
 
-      <div class="relative group">
-        <label
-          for="url"
-          class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase"
-          >URL de cuenta de Instagram (opcional)</label
-        >
-        <input
-          type="url"
-          id="url"
-          name="instagram_url"
-          autocomplete="url"
-          class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
-          placeholder="https://instagram.com/..."
-        />
-        <span
-          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"
-        ></span>
-        <span
-          class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"
-        ></span>
+        <div class="relative group">
+          <label
+            for="url"
+            class="block text-nextzy-gray-500 text-sm font-mono mb-2 uppercase"
+            >URL de Instagram (opcional)</label
+          >
+          <input
+            type="url"
+            id="url"
+            name="instagram_url"
+            autocomplete="url"
+            class="w-full bg-transparent border-none outline-none text-white text-lg py-2 peer"
+            placeholder="https://instagram.com/..."
+          />
+          <span
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-nextzy-purple transition-all duration-300 peer-focus:w-full"
+          ></span>
+          <span
+            class="absolute bottom-0 left-0 w-full h-[1px] bg-nextzy-gray-700 -z-10"
+          ></span>
+        </div>
       </div>
 
       <div class="relative group mb-4">
@@ -207,24 +230,57 @@ import Star from "../ui/Star.astro";
   // Submit de WhatsApp
   const form = document.getElementById("whatsapp-form") as HTMLFormElement;
   if (form) {
-    form.addEventListener("submit", (e) => {
+    const btnTextSpan = form.querySelector(".cta-button span");
+    const originalBtnText = btnTextSpan ? btnTextSpan.innerHTML : "Enviar mensaje vía WhatsApp";
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      
       const name = (document.getElementById("name") as HTMLInputElement).value;
-      const company = (document.getElementById("company") as HTMLInputElement)
-        .value;
+      const email = (document.getElementById("email") as HTMLInputElement).value;
+      const company = (document.getElementById("company") as HTMLInputElement).value;
       const url = (document.getElementById("url") as HTMLInputElement).value;
-      const message = (
-        document.getElementById("message") as HTMLTextAreaElement
-      ).value;
+      const message = (document.getElementById("message") as HTMLTextAreaElement).value;
 
-      const numero = "573052487564"; // Número de contacto actualizado
-      const text = `Hola, mi nombre es ${name} de ${company}.
-${message}`;
+      // Validación simple
+      if (!name || !email || !company || !message) {
+        alert("Por favor completa los campos requeridos.");
+        return;
+      }
 
-      window.open(
-        `https://wa.me/${numero}?text=${encodeURIComponent(text)}`,
-        "_blank",
-      );
+      // Estado de carga
+      submitBtn.disabled = true;
+      if (btnTextSpan) btnTextSpan.textContent = "Enviando...";
+
+      try {
+        // Enviar a Google Sheets vía endpoint API
+        const response = await fetch('/api/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, company, url, message })
+        });
+        
+        if (!response.ok) {
+          console.error("Error guardando en Google Sheets");
+        }
+      } catch (err) {
+        console.error("Error al conectar con la API", err);
+      } finally {
+        submitBtn.disabled = false;
+        if (btnTextSpan) btnTextSpan.innerHTML = originalBtnText;
+
+        // Redirigir siempre a WhatsApp
+        const numero = "573052487564"; // Número de contacto actualizado
+        const text = message;
+
+        window.open(
+          `https://wa.me/${numero}?text=${encodeURIComponent(text)}`,
+          "_blank",
+        );
+      }
     });
   }
 </script>
