@@ -119,7 +119,7 @@ import Star from '../ui/Star.astro';
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      // ---- Carrusel de Imágenes 3D al Scrollear ----
+      // ---- Carrusel de Imágenes 3D en Loop Automático (5 seg) ----
       const imgs = gsap.utils.toArray('.img-card') as HTMLElement[];
       
       if (imgs.length === 3) {
@@ -128,41 +128,36 @@ import Star from '../ui/Star.astro';
         gsap.set(imgs[1], { xPercent: 70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2 });
         gsap.set(imgs[2], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2 });
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: "#about-content",
-            start: "center center", 
-            end: "+=2500vh", // 500vh x 5 etapas (pausa, anim, pausa, anim, pausa)
-            pin: "#nosotros",
-            scrub: 1,
-            snap: 1/5 // Se detiene exacto en 0, 0.2, 0.4, 0.6, 0.8, 1
-          }
-        });
+        const tl = gsap.timeline({ repeat: -1 });
 
-        // FASE 0: Pausa Inicial (Viendo "Confianza")
-        tl.to({}, { duration: 1 });
+        // Cada ciclo dura 5s (4s de pausa + 1s de transición)
 
         // FASE 1: (Transición de Confianza -> Ventas)
-        tl.to('.word-slider', { yPercent: -33.333, duration: 1, ease: 'power1.inOut' }, 1)
-          .to(imgs[0], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, 1)
-          .to(imgs[1], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, 1)
-          .to(imgs[2], { opacity: 0, duration: 0.5, ease: 'none' }, 1)
-          .set(imgs[2], { xPercent: 70, zIndex: 1 }, 1.5)
-          .to(imgs[2], { opacity: 0.4, duration: 0.5, ease: 'none' }, 1.5);
+        tl.to({}, { duration: 4 }) // Pausa viendo "Confianza"
+          .to('.word-slider', { yPercent: -33.333, duration: 1, ease: 'power2.inOut' })
+          .to(imgs[0], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[1], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[2], { opacity: 0, duration: 0.5, ease: 'none' }, "<")
+          .set(imgs[2], { xPercent: 70, zIndex: 1 })
+          .to(imgs[2], { opacity: 0.4, duration: 0.5, ease: 'none' });
 
-        // FASE 2: Pausa Intermedia (Viendo "Ventas")
-        tl.to({}, { duration: 1 }, 2);
-
-        // FASE 3: (Transición de Ventas -> Conversión)
-        tl.to('.word-slider', { yPercent: -66.666, duration: 1, ease: 'power1.inOut' }, 3)
-          .to(imgs[1], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, 3)
-          .to(imgs[2], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, 3)
-          .to(imgs[0], { opacity: 0, duration: 0.5, ease: 'none' }, 3)
-          .set(imgs[0], { xPercent: 70, zIndex: 1 }, 3.5)
-          .to(imgs[0], { opacity: 0.4, duration: 0.5, ease: 'none' }, 3.5);
+        // FASE 2: (Transición de Ventas -> Conversión)
+        tl.to({}, { duration: 4 }) // Pausa viendo "Ventas"
+          .to('.word-slider', { yPercent: -66.666, duration: 1, ease: 'power2.inOut' })
+          .to(imgs[1], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[2], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[0], { opacity: 0, duration: 0.5, ease: 'none' }, "<")
+          .set(imgs[0], { xPercent: 70, zIndex: 1 })
+          .to(imgs[0], { opacity: 0.4, duration: 0.5, ease: 'none' });
           
-        // FASE 4: Pausa Final (Viendo "Conversión")
-        tl.to({}, { duration: 1 }, 4);
+        // FASE 3: (Transición de Conversión -> Confianza)
+        tl.to({}, { duration: 4 }) // Pausa viendo "Conversión"
+          .to('.word-slider', { yPercent: 0, duration: 1, ease: 'power2.inOut' })
+          .to(imgs[2], { xPercent: -70, scale: 0.75, filter: "blur(8px)", opacity: 0.4, zIndex: 2, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[0], { xPercent: 0, scale: 1, filter: "blur(0px)", opacity: 1, zIndex: 3, duration: 1, ease: 'power2.inOut' }, "<")
+          .to(imgs[1], { opacity: 0, duration: 0.5, ease: 'none' }, "<")
+          .set(imgs[1], { xPercent: 70, zIndex: 1 })
+          .to(imgs[1], { opacity: 0.4, duration: 0.5, ease: 'none' });
       }
     });
     // Párrafo con Scrub al hacer scroll
