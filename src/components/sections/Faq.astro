@@ -5,28 +5,18 @@ import Star from '../ui/Star.astro';
 const faqs = [
   {
     id: 'faq-1',
-    question: '¿Cuánto tiempo tarda en estar lista mi página web profesional?',
-    answer: 'El tiempo varía según el tipo de proyecto. Una landing page profesional puede estar lista en 5 a 7 días hábiles. Una web corporativa con múltiples secciones toma entre 10 y 15 días. Siempre trabajamos con plazos claros y etapas de revisión para que estés al tanto de cada avance.'
+    question: '¿Cuánto tiempo tarda en dar resultados?',
+    answer: 'Depende del punto en el que esté tu negocio, pero normalmente se empiezan a ver avances en las primeras semanas y resultados más sólidos en el mediano plazo. La ventaja es que es un canal que crece con el tiempo y no depende de pagar anuncios constantemente.'
   },
   {
     id: 'faq-2',
-    question: '¿Mi página web va a aparecer en Google con el diseño web que crean?',
-    answer: 'Sí. Todas nuestras páginas web incluyen SEO técnico integrado desde el primer día: estructura semántica de HTML, meta tags optimizados, velocidad de carga rápida y contenido orientado a las búsquedas de tus clientes potenciales. Publicamos en Google Search Console y seguimos las mejores prácticas de posicionamiento web.'
+    question: '¿Tengo que hacer algo o ustedes se encargan de todo?',
+    answer: 'Nosotros nos encargamos de todo el proceso técnico y estratégico: desde el diseño y desarrollo hasta la publicación en Google y el mantenimiento continuo. Tú solo te enfocas en tu negocio. Además, te acompañamos a largo plazo para cualquier actualización o mejora que necesites.'
   },
   {
     id: 'faq-3',
-    question: '¿Necesito saber de tecnología para manejar mi sitio web?',
-    answer: 'No. Nos encargamos de todo: hosting, dominio, certificado de seguridad SSL y mantenimiento continuo. Tú solo te enfocas en tu negocio. Además, te acompañamos a largo plazo para cualquier actualización, ajuste de contenido o mejora que necesites.'
-  },
-  {
-    id: 'faq-4',
-    question: '¿Qué diferencia a Nextzy Agency de otras agencias de diseño web?',
-    answer: 'Nos especializamos en páginas web que convierten visitantes en clientes reales. No solo diseñamos bonito: cada sección, título y llamada a la acción está pensada estratégicamente para generar confianza y ventas. Además, ofrecemos acompañamiento continuo y no desaparecemos después de la entrega.'
-  },
-  {
-    id: 'faq-5',
-    question: '¿Hacen páginas web para negocios pequeños como odontologías y clínicas estéticas?',
-    answer: 'Sí. Tenemos amplia experiencia creando páginas web para odontologías, centros estéticos, negocios de bienestar, tiendas online y empresas de servicios. Nuestros casos de estudio, como Oralproface y Go Essence, demuestran resultados reales adaptados a cada industria.'
+    question: '¿Cómo sé que esto realmente me traerá clientes?',
+    answer: 'No se trata solo de tener una página web, sino de crear un sistema enfocado en atraer personas que ya están buscando tu servicio en Google. Trabajamos con SEO local + optimización de conversión, para que no solo te encuentren, sino que te contacten.'
   }
 ];
 ---
@@ -58,14 +48,11 @@ const faqs = [
     </div>
 
     <!-- Lista FAQ -->
-    <dl class="flex flex-col gap-4 faq-list" itemscope itemtype="https://schema.org/FAQPage">
+    <dl class="flex flex-col gap-4 faq-list">
 
       {faqs.map((faq) => (
         <div
           class="faq-item border border-white/5 rounded-2xl bg-[#12161f] overflow-hidden group"
-          itemscope
-          itemprop="mainEntity"
-          itemtype="https://schema.org/Question"
         >
           <dt>
             <button
@@ -75,7 +62,6 @@ const faqs = [
               class="faq-btn w-full flex items-center justify-between gap-4 p-6 md:p-8 text-left cursor-pointer"
             >
               <span
-                itemprop="name"
                 class="text-base md:text-lg font-semibold text-nextzy-white leading-snug group-hover:text-nextzy-purple-light transition-colors duration-300"
               >
                 {faq.question}
@@ -99,12 +85,8 @@ const faqs = [
             role="region"
             aria-labelledby={`btn-${faq.id}`}
             class="faq-answer max-h-0 overflow-hidden"
-            itemscope
-            itemprop="acceptedAnswer"
-            itemtype="https://schema.org/Answer"
           >
             <p
-              itemprop="text"
               class="px-6 md:px-8 pb-6 md:pb-8 text-nextzy-gray-400 leading-relaxed text-sm md:text-base"
             >
               {faq.answer}
