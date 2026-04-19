@@ -1,0 +1,147 @@
+---
+// Process.astro
+---
+<section id="proceso" class="w-full relative py-20 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto relative z-10">
+    
+    <!-- Encabezado de la Sección -->
+    <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-20 process-header">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="w-8 h-[2px] bg-[#8A4FFF]/50"></span>
+        <span class="text-[#8A4FFF] font-semibold tracking-widest text-sm uppercase">Proceso de Trabajo</span>
+        <span class="w-8 h-[2px] bg-[#8A4FFF]/50"></span>
+      </div>
+      <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight tracking-tight text-white mb-6">
+        Un enfoque estructurado para garantizar resultados excepcionales
+      </h2>
+    </div>
+
+    <!-- Contenedor del Proceso -->
+    <div class="relative max-w-6xl mx-auto list-none pl-0">
+      
+      <!-- Línea Conectora Desktop -->
+      <div class="absolute top-10 left-[10%] w-[80%] h-[2px] bg-gradient-to-r from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 hidden lg:block process-line-desktop"></div>
+      
+      <!-- Línea Conectora Mobile -->
+      <div class="absolute top-[5%] left-1/2 -translate-x-1/2 w-[2px] h-[90%] bg-gradient-to-b from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 lg:hidden process-line-mobile"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
+        
+        <!-- Paso 01 -->
+        <div class="relative flex flex-col items-center text-center process-item">
+          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
+            01
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Descubrimiento</h3>
+          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
+            Analizamos tus necesidades, objetivos y público objetivo para definir la estrategia perfecta.
+          </p>
+        </div>
+
+        <!-- Paso 02 -->
+        <div class="relative flex flex-col items-center text-center process-item">
+          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
+            02
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Diseño</h3>
+          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
+            Creamos wireframes y prototipos interactivos que reflejan tu visión y mejoran la experiencia de usuario.
+          </p>
+        </div>
+
+        <!-- Paso 03 -->
+        <div class="relative flex flex-col items-center text-center process-item">
+          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
+            03
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Desarrollo</h3>
+          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
+            Transformamos el diseño en código limpio, optimizado y escalable con las mejores tecnologías.
+          </p>
+        </div>
+
+        <!-- Paso 04 -->
+        <div class="relative flex flex-col items-center text-center process-item">
+          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
+            04
+          </div>
+          <h3 class="text-xl font-bold text-white mb-3">Lanzamiento</h3>
+          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
+            Desplegamos tu proyecto, realizamos pruebas exhaustivas y te acompañamos en el post-lanzamiento.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animación del Encabezado
+  gsap.fromTo('.process-header', 
+    { y: 40, opacity: 0 },
+    { 
+      y: 0, 
+      opacity: 1, 
+      duration: 1, 
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.process-header',
+        start: 'top 85%',
+      }
+    }
+  );
+
+  // Animación de los Ítems
+  const items = gsap.utils.toArray('.process-item');
+  items.forEach((item: any, i) => {
+    gsap.fromTo(item,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        delay: i * 0.2, // Efecto cascada
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+        }
+      }
+    );
+  });
+
+  // Animación de la Línea
+  gsap.fromTo('.process-line-desktop',
+    { scaleX: 0, opacity: 0, transformOrigin: 'left center' },
+    {
+      scaleX: 1,
+      opacity: 1,
+      duration: 1.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.process-line-desktop',
+        start: 'top 80%',
+      }
+    }
+  );
+
+  gsap.fromTo('.process-line-mobile',
+    { scaleY: 0, opacity: 0, transformOrigin: 'top center' },
+    {
+      scaleY: 1,
+      opacity: 1,
+      duration: 1.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.process-line-mobile',
+        start: 'top 80%',
+      }
+    }
+  );
+</script>

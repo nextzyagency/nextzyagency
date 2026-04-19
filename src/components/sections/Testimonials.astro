@@ -1,302 +1,330 @@
 ---
-// Testimonials.astro (Ahora Casos de Estudio)
-import Star from "../ui/Star.astro";
+// Testimonials.astro (Reestructurado a Caso de Estudio / Resultados)
 ---
 
-<section
-  id="casos"
-  class="relative w-full h-[120dvh] min-h-[700px] flex flex-col items-center justify-center overflow-hidden"
->
-  <div
-    class="w-full max-w-7xl mx-auto px-6 mb-0 flex flex-col justify-start relative z-10"
-  >
-    <div
-      class="text-nextzy-purple-light font-mono tracking-widest uppercase text-xs font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm w-max pointer-events-none"
-    >
-      // Nuestros Casos
+<section id="casos" class="relative w-full py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden">
+  
+  <!-- Background Glows -->
+  <div class="absolute top-1/2 left-0 w-96 h-96 bg-[#8A4FFF]/20 blur-[120px] -translate-y-1/2 rounded-full pointer-events-none"></div>
+  
+
+  <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 cs-header">
+      <div class="text-[#8A4FFF] font-mono tracking-widest uppercase text-xs font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm w-max mb-6">
+        Caso de Estudio: Go Essence
+      </div>
+      <h2 class="text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tighter text-white mb-6 leading-[1.1]">
+        De no generar clientes a llenar su agenda en <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8]">90 días</span>
+      </h2>
+      <p class="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto">
+        Go Essence pasó de no recibir clientes de su web a generar citas constantes cada semana gracias a una estrategia enfocada en SEO y conversión.
+      </p>
     </div>
-    <h2
-      class="text-4xl md:text-5xl lg:text-7xl font-sans font-black tracking-tighter text-nextzy-white uppercase py-2"
-    >
-      Historias de <span
-        class="filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
-        ><span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark"
-          >Éxito.</span
-        ></span
-      >
-    </h2>
-  </div>
 
-  <div
-    class="relative w-full group/slider flex items-center justify-center max-w-[100vw]"
-  >
-    <!-- Controles superpuestos (Desktop + Movil unificados) -->
-    <button
-      id="prev-btn"
-      class="absolute left-4 md:left-8 xl:left-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#12161f]/90 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:scale-110 hover:bg-nextzy-purple hover:border-nextzy-purple transition-all duration-300 data-[hidden=true]:opacity-0 data-[hidden=true]:scale-90 data-[hidden=true]:pointer-events-none"
-    >
-      <svg
-        class="w-6 h-6 md:w-8 md:h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 19l-7-7 7-7"></path></svg
-      >
-    </button>
-
-    <button
-      id="next-btn"
-      class="absolute right-4 md:right-8 xl:right-16 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#12161f]/90 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white cursor-pointer shadow-[0_0_30px_rgba(0,0,0,0.8)] hover:scale-110 hover:bg-nextzy-purple hover:border-nextzy-purple transition-all duration-300 data-[hidden=true]:opacity-0 data-[hidden=true]:scale-90 data-[hidden=true]:pointer-events-none"
-    >
-      <svg
-        class="w-6 h-6 md:w-8 md:h-8"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 5l7 7-7 7"></path></svg
-      >
-    </button>
-
-    <!-- Pista de Slider -->
-    <div
-      id="slider-track"
-      class="flex gap-6 md:gap-12 px-6 md:px-[10vw] overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth py-28 w-full"
-    >
-
-      <!-- Card 1: Elite Store -->
-      <div
-        class="relative snap-center shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw]"
-      >
-        <div
-          class="absolute inset-0 bg-nextzy-purple/20 md:bg-nextzy-purple/30 blur-[60px] md:blur-[100px] -z-10 rounded-[40px] opacity-70"
-        >
+    <!-- Main Grid Content -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
+      
+      <!-- Lado Izquierdo: Datos y Texto -->
+      <div class="lg:col-span-7 flex flex-col gap-8 cs-left">
+        
+        <!-- Antes vs Después -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Antes -->
+          <div class="p-6 rounded-2xl bg-[#1a0f14]/80 border border-white/5 relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+              <svg class="w-16 h-16 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg>
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 text-gray-500">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </div>
+              <h4 class="text-gray-400/80 font-bold uppercase tracking-wider text-sm">Antes</h4>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-gray-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> 0 tráfico orgánico
+              </li>
+              <li class="flex items-center gap-3 text-gray-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> 2–3 clientes/mes
+              </li>
+              <li class="flex items-center gap-3 text-gray-500">
+                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> Sin presencia en Google
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Después -->
+          <div class="p-6 rounded-2xl bg-[#8A4FFF]/10 border border-[#8A4FFF]/30 relative overflow-hidden shadow-[0_0_30px_rgba(138,79,255,0.15)] group">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+              <svg class="w-16 h-16 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+            </div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-8 rounded-full flex items-center justify-center bg-[#8A4FFF] text-white shadow-[0_0_15px_rgba(138,79,255,0.5)]">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <h4 class="text-white font-bold uppercase tracking-wider text-sm">Después</h4>
+            </div>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-gray-100 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> 1,200+ visitas/mes
+              </li>
+              <li class="flex items-center gap-3 text-gray-100 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> 30–45 leads mensuales
+              </li>
+              <li class="flex items-center gap-3 text-[#b68ef8] font-bold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF] shadow-[0_0_8px_#8a4fff]"></span> +400% reservas
+              </li>
+              <li class="flex items-center gap-3 text-gray-100 font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> Posicionamiento local
+              </li>
+            </ul>
+          </div>
         </div>
-        <div
-          class="h-[65vh] md:h-[55vh] border border-white/5 rounded-[32px] md:rounded-[40px] bg-[#12161f] shadow-2xl flex flex-col md:flex-row overflow-hidden group"
-        >
-          <div
-            class="w-full md:w-1/2 h-[45%] md:h-full bg-nextzy-gray-900 relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-nextzy-purple/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"
-            >
-            </div>
-            <img
-              src="/imagenes/testimonials/elite-store.png"
-              alt="Caso de estudio: Elite Store - Tienda online de moda diseñada por Nextzy Agency"
-              title="Proyecto web Elite Store"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 pointer-events-none"
-            />
+
+        <!-- Métricas Destacadas -->
+        <div class="grid grid-cols-3 gap-0 bg-[#09090b] rounded-2xl border border-white/10 divide-x divide-white/5 overflow-hidden">
+          <div class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors">
+            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">+1,200<span class="text-xl md:text-2xl">%</span></p>
+            <p class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest">Tráfico</p>
           </div>
-          <div
-            class="w-full md:w-1/2 h-[55%] md:h-[100%] flex flex-col justify-center p-6 md:p-10 lg:p-14 relative bg-[#12161f]"
-          >
-            <Star
-              class="absolute top-8 right-8 w-6 h-6 text-nextzy-purple-light opacity-20 hidden md:block"
-            />
-            <div
-              class="text-nextzy-purple-light font-mono text-xs uppercase tracking-widest mb-3 md:mb-5 border border-nextzy-purple/20 rounded-full py-1 px-3 w-fit"
-            >
-              Moda y Retail
-            </div>
-            <h3
-              class="text-3xl md:text-5xl font-drama italic text-nextzy-white mb-3 md:mb-5"
-            >
-              Elite Store
-            </h3>
-            <p
-              class="text-nextzy-gray-400 text-[15px] md:text-lg leading-relaxed mb-6 md:mb-8 line-clamp-4 md:line-clamp-none"
-            >
-              Desarrollamos una tienda online de alto impacto visual que
-              comunica exclusividad y genera confianza desde el primer
-              scroll. Diseño premium orientado a conversión.
-            </p>
-            <a
-              href="https://elite-store-demo.pages.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Ver el sitio web de Elite Store, caso de estudio de Nextzy Agency"
-              aria-label="Ver el proyecto web Elite Store en una nueva pestaña"
-              class="inline-flex items-center justify-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/50 hover:bg-nextzy-purple text-nextzy-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 w-max shadow-[0_0_15px_rgba(138,79,255,0.15)] hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
-            >
-              Ver más
-              <svg
-                class="w-4 h-4 mt-[-1px]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-              >
-            </a>
+          <div class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors">
+            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">x15</p>
+            <p class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest">Leads</p>
           </div>
+          <div class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors">
+            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">+400<span class="text-xl md:text-2xl">%</span></p>
+            <p class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest">Reservas</p>
+          </div>
+        </div>
+
+        <!-- Cómo se logró -->
+        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 md:p-8">
+          <h4 class="text-white text-lg font-bold mb-4 font-drama italic">¿Cómo se logró?</h4>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-gray-300 text-sm font-medium">SEO local optimizado</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-gray-300 text-sm font-medium">Copy orientado a conversión</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-gray-300 text-sm font-medium">Diseño estratégico</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0">
+                <svg class="w-3 h-3 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+              </div>
+              <span class="text-gray-300 text-sm font-medium">Optimización de velocidad</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <!-- Card 3: Go Essence -->
-      <div
-        class="relative snap-center shrink-0 w-[85vw] md:w-[70vw] lg:w-[60vw]"
-      >
-        <div
-          class="absolute inset-0 bg-nextzy-purple/20 md:bg-nextzy-purple/30 blur-[60px] md:blur-[100px] -z-10 rounded-[40px] opacity-70"
-        >
-        </div>
-        <div
-          class="h-[65vh] md:h-[55vh] border border-white/5 rounded-[32px] md:rounded-[40px] bg-[#12161f] shadow-2xl flex flex-col md:flex-row overflow-hidden group"
-        >
-          <div
-            class="w-full md:w-1/2 h-[45%] md:h-full bg-nextzy-gray-900 relative overflow-hidden"
-          >
-            <div
-              class="absolute inset-0 bg-nextzy-purple/20 mix-blend-overlay z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"
-            >
+      <!-- Lado Derecho: GRÁFICAS -->
+      <div class="lg:col-span-5 flex flex-col gap-6 cs-right">
+        
+        <!-- Gráfica de Tráfico -->
+        <div class="bg-[#09090b] border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-b from-[#8A4FFF]/5 to-transparent opacity-50"></div>
+          <div class="relative z-10">
+            <div class="mb-6 flex justify-between items-start">
+              <div>
+                <h4 class="text-white font-bold mb-1">Crecimiento de Tráfico Orgánico</h4>
+                <p class="text-xs text-gray-500">Últimos 90 días</p>
+              </div>
+              <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-bold px-2 py-1 rounded">
+                SEO
+              </span>
             </div>
-            <img
-              src="/imagenes/testimonials/go-essence.png"
-              alt="Caso de estudio: Go Essence - Tienda web de aceites esenciales diseñada por Nextzy Agency"
-              title="Proyecto web Go Essence"
-              width="600"
-              height="400"
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105 pointer-events-none"
-            />
-          </div>
-          <div
-            class="w-full md:w-1/2 h-[55%] md:h-[100%] flex flex-col justify-center p-6 md:p-10 lg:p-14 relative bg-[#12161f]"
-          >
-            <Star
-              class="absolute top-8 right-8 w-6 h-6 text-nextzy-purple-light opacity-20 hidden md:block"
-            />
-            <div
-              class="text-nextzy-purple-light font-mono text-xs md:text-sm uppercase tracking-widest mb-3 md:mb-5 border border-nextzy-purple/20 rounded-full py-1 px-3 w-fit"
-            >
-              Bienestar y Belleza
+            
+            <!-- Contenedor del Gráfico (Línea) -->
+            <div class="w-full h-40 flex items-end relative border-b border-l border-white/5 pb-1 pl-1">
+              <!-- Grid lines -->
+              <div class="absolute top-0 w-full h-[1px] bg-white/5"></div>
+              <div class="absolute top-[33%] w-full h-[1px] bg-white/5"></div>
+              <div class="absolute top-[66%] w-full h-[1px] bg-white/5"></div>
+              
+              <!-- Gráfico SVG Animado -->
+              <svg class="w-full h-full overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#8A4FFF" stop-opacity="0.4"/>
+                    <stop offset="100%" stop-color="#8A4FFF" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Área de fondo -->
+                <path class="chart-area" d="M0,40 L0,38 L15,35 L30,30 L45,22 L60,15 L75,8 L90,3 L100,2 L100,40 Z" fill="url(#lineGrad)" opacity="0"/>
+                <!-- Línea de trazado -->
+                <path class="chart-line" d="M0,38 L15,35 L30,30 L45,22 L60,15 L75,8 L90,3 L100,2" fill="none" stroke="#8A4FFF" stroke-width="2.5" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round" />
+                
+                <!-- Puntos -->
+                <circle cx="100" cy="2" r="3" fill="#ffffff" stroke="#8A4FFF" stroke-width="2" class="chart-point" />
+              </svg>
             </div>
-            <h3
-              class="text-3xl md:text-5xl font-drama italic text-nextzy-white mb-3 md:mb-5"
-            >
-              Go Essence
-            </h3>
-            <p
-              class="text-nextzy-gray-400 text-[15px] md:text-lg leading-relaxed mb-6 md:mb-8 line-clamp-4 md:line-clamp-none"
-            >
-              Creamos un entorno inmersivo que evoca tranquilidad y pureza.
-              Optimizamos su catálogo gráfico de aceites esenciales elevando el
-              ticket promedio de compra.
-            </p>
-            <a
-              href="https://go-essence.pages.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="Ver el sitio web de Go Essence, caso de estudio de Nextzy Agency"
-              aria-label="Ver el proyecto web Go Essence en una nueva pestaña"
-              class="inline-flex items-center justify-center gap-2 bg-nextzy-purple/20 border border-nextzy-purple-light/50 hover:bg-nextzy-purple text-nextzy-white font-bold uppercase tracking-widest text-[10px] md:text-xs px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-all duration-300 w-max shadow-[0_0_15px_rgba(138,79,255,0.15)] hover:shadow-[0_0_25px_rgba(138,79,255,0.4)]"
-            >
-              Ver más
-              <svg
-                class="w-4 h-4 mt-[-1px]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg
-              >
-            </a>
+            <div class="flex justify-between w-full text-[10px] text-gray-600 mt-2 pl-2">
+              <span>Mes 1</span>
+              <span>Mes 2</span>
+              <span>Mes 3</span>
+            </div>
           </div>
         </div>
+
+        <!-- Gráfica de Leads -->
+        <div class="bg-[#09090b] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden">
+          <div class="mb-6 flex justify-between items-start">
+            <div>
+              <h4 class="text-white font-bold mb-1">Leads Mensuales Generados</h4>
+              <p class="text-xs text-gray-500">Contactos Cualificados</p>
+            </div>
+            <span class="bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-bold px-2 py-1 rounded">
+              x15 ROAS
+            </span>
+          </div>
+
+          <!-- Contenedor del Gráfico (Barras) -->
+          <div class="w-full h-40 flex items-end justify-center gap-12 sm:gap-20 relative border-b border-white/5 pb-2">
+            <!-- Grid lines horizontales -->
+            <div class="absolute top-0 w-full h-[1px] bg-white/5"></div>
+            <div class="absolute top-[50%] w-full h-[1px] bg-white/5"></div>
+            
+            <!-- Barra Antes -->
+            <div class="w-16 flex flex-col items-center gap-3 relative z-10 group">
+              <div class="text-[10px] text-gray-500 font-mono absolute -top-6">2-3</div>
+              <div class="w-12 md:w-16 bg-[#1a1a24] border border-white/5 rounded-t-lg h-[15%] transition-all duration-300"></div>
+              <span class="text-xs text-gray-500 font-medium">Antes</span>
+            </div>
+            
+            <!-- Barra Después -->
+            <div class="w-16 flex flex-col items-center gap-3 relative z-10">
+              <div class="text-sm text-white font-bold font-mono absolute -top-7 chart-counter">30-45</div>
+              <div class="w-12 md:w-16 bg-gradient-to-t from-[#6035b8] to-[#8A4FFF] rounded-t-lg h-[90%] shadow-[0_0_25px_rgba(138,79,255,0.4)] relative overflow-hidden bar-after">
+                 <!-- Brillo animado -->
+                 <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-transparent via-white/20 to-transparent -translate-y-full flex animate-[shimmer_2s_infinite]"></div>
+              </div>
+              <span class="text-xs text-white font-bold">Después</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+
+    <!-- Bloque FOMO y CTA -->
+    <div class="max-w-4xl mx-auto text-center bg-[#8A4FFF]/5 border border-[#8A4FFF]/20 rounded-3xl p-8 md:p-12 backdrop-blur-sm relative overflow-hidden cs-footer">
+       <!-- Efecto Glow de fondo en el card -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[100px] bg-gradient-to-b from-[#8A4FFF]/20 to-transparent pointer-events-none"></div>
+      
+      <p class="text-xl md:text-2xl font-medium text-white mb-8 leading-relaxed max-w-3xl mx-auto shadow-sm">
+        "<span class="text-gray-400">Mientras muchas clínicas siguen dependiendo del voz a voz,</span> Go Essence ya está captando clientes todos los días desde Google."
+      </p>
+      
+      <a href="#contacto" title="Quiero resultados así para mi web" class="inline-flex items-center justify-center gap-2 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white text-lg font-bold py-4 px-10 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(138,79,255,0.4)] hover:shadow-[0_0_40px_rgba(138,79,255,0.6)]">
+        Quiero resultados así
+        <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+    </div>
+
   </div>
 </section>
-
-<style>
-  /* Para esconder el scrollbar nativo pero mantener la funcionalidad de swipe */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-</style>
 
 <script>
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    const track = document.getElementById("slider-track");
-    const btnNext = document.getElementById("next-btn");
-    const btnPrev = document.getElementById("prev-btn");
+    
+    // Animación de aparición general
+    gsap.from(".cs-header", {
+      y: 30, opacity: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: "#casos", start: "top 80%" }
+    });
 
-    if (track && btnNext && btnPrev) {
-      const updateButtonsState = () => {
-        // Tolerancia de 10px para considerar límites con zoom/rounding pixels
-        if (track.scrollLeft <= 10) {
-          btnPrev.setAttribute("data-hidden", "true");
-        } else {
-          btnPrev.removeAttribute("data-hidden");
-        }
+    gsap.from(".cs-left > *", {
+      y: 40, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power2.out",
+      scrollTrigger: { trigger: ".cs-left", start: "top 85%" }
+    });
 
-        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
-          btnNext.setAttribute("data-hidden", "true");
-        } else {
-          btnNext.removeAttribute("data-hidden");
-        }
-      };
+    gsap.from(".cs-right > *", {
+      x: 30, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out", delay: 0.2,
+      scrollTrigger: { trigger: ".cs-right", start: "top 85%" }
+    });
 
-      track.addEventListener("scroll", updateButtonsState, { passive: true });
-      window.addEventListener("resize", updateButtonsState);
-      updateButtonsState(); // Check immediately on load
-
-      const getScrollAmount = () => {
-        const vw = Math.max(
-          document.documentElement.clientWidth || 0,
-          window.innerWidth || 0,
-        );
-        return vw < 768 ? vw * 0.85 : vw * 0.6;
-      };
-
-      const goNext = () =>
-        track.scrollBy({ left: getScrollAmount() + 24, behavior: "smooth" });
-      const goPrev = () =>
-        track.scrollBy({ left: -(getScrollAmount() + 24), behavior: "smooth" });
-
-      btnNext.addEventListener("click", goNext);
-      btnPrev.addEventListener("click", goPrev);
-
-      // Entrada por scroll suave
-      gsap.from("#casos", {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "power3.out",
+    // Animación Gráfica de Línea (Draw SVG Effect - simplificado)
+    const lineChart = document.querySelector(".chart-line");
+    if(lineChart){
+      const length = (lineChart as SVGPathElement).getTotalLength();
+      gsap.set(lineChart, { strokeDasharray: length, strokeDashoffset: length });
+      
+      gsap.to(lineChart, {
+        strokeDashoffset: 0,
+        duration: 2,
+        ease: "power2.inOut",
         scrollTrigger: {
-          trigger: "#casos",
-          start: "top 85%",
-        },
+          trigger: ".cs-right",
+          start: "top 75%"
+        }
+      });
+      
+      gsap.to(".chart-area", {
+        opacity: 1,
+        duration: 1.5,
+        delay: 1,
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".cs-right",
+          start: "top 75%"
+        }
+      });
+      
+      gsap.from(".chart-point", {
+        scale: 0,
+        opacity: 0,
+        transformOrigin: "center",
+        duration: 0.5,
+        delay: 1.8,
+        ease: "back.out(2)",
+        scrollTrigger: {
+          trigger: ".cs-right",
+          start: "top 75%"
+        }
       });
     }
+
+    // Animación Gráfica de Barras
+    gsap.from(".bar-after", {
+      height: "15%",
+      duration: 1.5,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".bar-after",
+        start: "top 85%"
+      }
+    });
+
+    gsap.from(".cs-footer", {
+      y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out",
+      scrollTrigger: { trigger: ".cs-footer", start: "top 85%" }
+    });
+
   });
 </script>
+
+<style>
+  @keyframes shimmer {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-100%); }
+  }
+</style>
