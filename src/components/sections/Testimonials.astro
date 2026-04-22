@@ -1,478 +1,149 @@
 ---
-// Testimonials.astro (Reestructurado a Caso de Estudio / Resultados)
+// Testimonials.astro — Proyectos Anteriores
+const projects = [
+  {
+    category: "Estética & Bienestar",
+    name: "Go Essence",
+    subtitle: "Clínica de estética en Barranquilla",
+    tags: ["SEO Local", "Landing Page", "Copy Persuasivo"],
+    image: "/imagenes/testimonials/go-essence.png",
+    description:
+      "Pasó de depender exclusivamente del voz a voz a generar citas constantes desde Google cada semana, con una estrategia enfocada en SEO local y conversión.",
+    url: "https://go-essence.pages.dev",
+  },
+  {
+    category: "Salud & Odontología",
+    name: "Oralproface",
+    subtitle: "Clínica odontológica de especialidades",
+    tags: ["SEO On-Page", "Diseño Web", "Optimización de Velocidad"],
+    image: "/imagenes/testimonials/oralproface.png",
+    description:
+      "Rediseño completo orientado a conversión y SEO On-Page, logrando posicionamiento en la primera página de Google y duplicando las consultas mensuales.",
+    url: "https://oralproface.pages.dev",
+  },
+];
 ---
 
 <section
-  id="casos"
-  class="relative w-full py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden"
+  id="proyectos"
+  class="relative w-full py-24 md:py-32 overflow-hidden"
 >
-  <!-- Background Glows -->
+  <!-- Background glows -->
   <div
-    class="absolute top-1/2 left-0 w-96 h-96 bg-[#8A4FFF]/20 blur-[120px] -translate-y-1/2 rounded-full pointer-events-none"
-  >
-  </div>
+    class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-900/20 blur-[140px] -translate-y-1/2 rounded-full pointer-events-none"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-64 h-64 bg-purple-900/15 blur-[100px] rounded-full pointer-events-none"
+  ></div>
 
-  <div class="w-full max-w-7xl mx-auto px-6 relative z-10">
-    <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-16 cs-header">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="text-center max-w-2xl mx-auto mb-16 proj-header">
       <div
-        class="text-[#8A4FFF] font-mono tracking-widest uppercase text-xs font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm w-max mb-6"
+        class="inline-block text-[#8A4FFF] font-mono tracking-widest uppercase text-xs font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full backdrop-blur-sm mb-6"
       >
-        Caso de Estudio: Go Essence
+        Resultados reales
       </div>
       <h2
-        class="text-3xl md:text-5xl lg:text-6xl font-sans font-black tracking-tighter text-white mb-6 leading-[1.1]"
+        class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-5 leading-tight"
       >
-        De no generar clientes a llenar su agenda en <span
+        Proyectos <span
           class="text-transparent bg-clip-text bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8]"
-          >90 días</span
+          >Anteriores</span
         >
       </h2>
-      <p
-        class="text-gray-400 text-lg md:text-xl font-medium leading-relaxed max-w-2xl mx-auto"
-      >
-        Go Essence pasó de no recibir clientes de su web a generar citas
-        constantes cada semana gracias a una estrategia enfocada en SEO y
-        conversión.
+      <p class="text-gray-400 text-lg leading-relaxed">
+        Marcas reales que confiaron en nuestra metodología y transformaron su
+        presencia digital en resultados medibles.
       </p>
     </div>
 
-    <!-- Main Grid Content -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-20">
-      <!-- Lado Izquierdo: Datos y Texto -->
-      <div class="lg:col-span-7 flex flex-col gap-8 cs-left">
-        <!-- Antes vs Después -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Antes -->
-          <div
-            class="p-6 rounded-2xl bg-[#1a0f14]/80 border border-white/5 relative overflow-hidden group"
-          >
-            <div class="absolute top-0 right-0 p-4 opacity-10">
-              <svg
-                class="w-16 h-16 text-red-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path></svg
-              >
-            </div>
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 text-gray-500"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"></path></svg
-                >
-              </div>
-              <h4
-                class="text-gray-400/80 font-bold uppercase tracking-wider text-sm"
-              >
-                Antes
-              </h4>
-            </div>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-gray-500">
-                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> 0 tráfico
-                orgánico
-              </li>
-              <li class="flex items-center gap-3 text-gray-500">
-                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> 2–3 clientes/mes
-              </li>
-              <li class="flex items-center gap-3 text-gray-500">
-                <span class="w-1.5 h-1.5 rounded-full bg-red-900/50"></span> Sin presencia
-                en Google
-              </li>
-            </ul>
-          </div>
+    <!-- Cards -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch proj-cards">
+      {
+        projects.map((p) => (
+          <article class="group h-full flex flex-col rounded-3xl overflow-hidden border border-white/10 bg-[#0d0d10] transition-all duration-500 hover:border-[#8A4FFF]/50 hover:shadow-[0_0_60px_rgba(138,79,255,0.15)]">
 
-          <!-- Después -->
-          <div
-            class="p-6 rounded-2xl bg-[#8A4FFF]/10 border border-[#8A4FFF]/30 relative overflow-hidden shadow-[0_0_30px_rgba(138,79,255,0.15)] group"
-          >
-            <div class="absolute top-0 right-0 p-4 opacity-10">
-              <svg
-                class="w-16 h-16 text-[#8A4FFF]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                ><path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg
-              >
-            </div>
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-8 h-8 rounded-full flex items-center justify-center bg-[#8A4FFF] text-white shadow-[0_0_15px_rgba(138,79,255,0.5)]"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-              </div>
-              <h4 class="text-white font-bold uppercase tracking-wider text-sm">
-                Después
-              </h4>
-            </div>
-            <ul class="space-y-3">
-              <li class="flex items-center gap-3 text-gray-100 font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> 150+ visitas/mes
-              </li>
-              <li class="flex items-center gap-3 text-gray-100 font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> 15+ leads
-                mensuales
-              </li>
-              <li class="flex items-center gap-3 text-[#b68ef8] font-bold">
-                <span
-                  class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF] shadow-[0_0_8px_#8a4fff]"
-                ></span> +80% reservas
-              </li>
-              <li class="flex items-center gap-3 text-gray-100 font-medium">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#8A4FFF]"></span> Posicionamiento
-                local
-              </li>
-            </ul>
-          </div>
-        </div>
+            <!-- Color accent bar -->
+            <div class="h-[3px] w-full bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8] opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
-        <!-- Métricas Destacadas -->
-        <div
-          class="grid grid-cols-3 gap-0 bg-[#09090b] rounded-2xl border border-white/10 divide-x divide-white/5 overflow-hidden"
-        >
-          <div
-            class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors"
-          >
-            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">
-              +150<span class="text-xl md:text-2xl">%</span>
-            </p>
-            <p
-              class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest"
-            >
-              Tráfico Orgánico
-            </p>
-          </div>
-          <div
-            class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors"
-          >
-            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">
-              x3
-            </p>
-            <p
-              class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest"
-            >
-              Leads
-            </p>
-          </div>
-          <div
-            class="p-4 md:p-6 text-center hover:bg-white/5 transition-colors"
-          >
-            <p class="text-2xl md:text-4xl font-black text-[#8A4FFF] mb-1">
-              +80<span class="text-xl md:text-2xl">%</span>
-            </p>
-            <p
-              class="text-[10px] md:text-xs text-gray-500 uppercase font-bold tracking-widest"
-            >
-              Reservas
-            </p>
-          </div>
-        </div>
+            <div class="flex flex-col gap-6 p-8 flex-1">
 
-        <!-- Cómo se logró -->
-        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 md:p-8">
-          <h4 class="text-white text-lg font-bold mb-4 font-drama italic">
-            ¿Cómo se logró?
-          </h4>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <li class="flex items-center gap-3">
-              <div
-                class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0"
-              >
-                <svg
-                  class="w-3 h-3 text-[#8A4FFF]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-              </div>
-              <span class="text-gray-300 text-sm font-medium"
-                >SEO local optimizado</span
-              >
-            </li>
-            <li class="flex items-center gap-3">
-              <div
-                class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0"
-              >
-                <svg
-                  class="w-3 h-3 text-[#8A4FFF]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-              </div>
-              <span class="text-gray-300 text-sm font-medium"
-                >Copy orientado a conversión</span
-              >
-            </li>
-            <li class="flex items-center gap-3">
-              <div
-                class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0"
-              >
-                <svg
-                  class="w-3 h-3 text-[#8A4FFF]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-              </div>
-              <span class="text-gray-300 text-sm font-medium"
-                >Diseño estratégico</span
-              >
-            </li>
-            <li class="flex items-center gap-3">
-              <div
-                class="w-6 h-6 rounded border border-[#8A4FFF]/50 flex items-center justify-center shrink-0"
-              >
-                <svg
-                  class="w-3 h-3 text-[#8A4FFF]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13l4 4L19 7"></path></svg
-                >
-              </div>
-              <span class="text-gray-300 text-sm font-medium"
-                >Optimización de velocidad</span
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Lado Derecho: GRÁFICAS -->
-      <div class="lg:col-span-5 flex flex-col gap-6 cs-right">
-        <!-- Gráfica de Tráfico -->
-        <div
-          class="bg-[#09090b] border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden group"
-        >
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-[#8A4FFF]/5 to-transparent opacity-50"
-          >
-          </div>
-          <div class="relative z-10">
-            <div class="mb-6 flex justify-between items-start">
-              <div>
-                <h4 class="text-white font-bold mb-1">
-                  Crecimiento de Tráfico Orgánico
-                </h4>
-                <p class="text-xs text-gray-500">Últimos 90 días</p>
-              </div>
-              <span
-                class="bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-bold px-2 py-1 rounded"
-              >
-                SEO
-              </span>
-            </div>
-
-            <!-- Contenedor del Gráfico (Línea) -->
-            <div
-              class="w-full h-40 flex items-end relative border-b border-l border-white/5 pb-1 pl-1"
-            >
-              <!-- Grid lines -->
-              <div class="absolute top-0 w-full h-[1px] bg-white/5"></div>
-              <div class="absolute top-[33%] w-full h-[1px] bg-white/5"></div>
-              <div class="absolute top-[66%] w-full h-[1px] bg-white/5"></div>
-
-              <!-- Gráfico SVG Animado -->
-              <svg
-                class="w-full h-full overflow-visible"
-                viewBox="0 0 100 40"
-                preserveAspectRatio="none"
-              >
-                <defs>
-                  <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#8A4FFF" stop-opacity="0.4"
-                    ></stop>
-                    <stop offset="100%" stop-color="#8A4FFF" stop-opacity="0"
-                    ></stop>
-                  </linearGradient>
-                </defs>
-                <!-- Área de fondo -->
-                <path
-                  class="chart-area"
-                  d="M0,40 L0,38 L15,35 L30,30 L45,22 L60,15 L75,8 L90,3 L100,2 L100,40 Z"
-                  fill="url(#lineGrad)"
-                  opacity="0"></path>
-                <!-- Línea de trazado -->
-                <path
-                  class="chart-line"
-                  d="M0,38 L15,35 L30,30 L45,22 L60,15 L75,8 L90,3 L100,2"
-                  fill="none"
-                  stroke="#8A4FFF"
-                  stroke-width="2.5"
-                  vector-effect="non-scaling-stroke"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-
-                <!-- Puntos -->
-                <circle
-                  cx="100"
-                  cy="2"
-                  r="3"
-                  fill="#ffffff"
-                  stroke="#8A4FFF"
-                  stroke-width="2"
-                  class="chart-point"></circle>
-              </svg>
-            </div>
-            <div
-              class="flex justify-between w-full text-[10px] text-gray-600 mt-2 pl-2"
-            >
-              <span>Mes 1</span>
-              <span>Mes 2</span>
-              <span>Mes 3</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gráfica de Leads -->
-        <div
-          class="bg-[#09090b] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden"
-        >
-          <div class="mb-6 flex justify-between items-start">
-            <div>
-              <h4 class="text-white font-bold mb-1">
-                Leads Mensuales Generados
-              </h4>
-              <p class="text-xs text-gray-500">Contactos Cualificados</p>
-            </div>
-            <span
-              class="bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-bold px-2 py-1 rounded"
-            >
-              x2.5 ROAS
-            </span>
-          </div>
-
-          <!-- Contenedor del Gráfico (Barras) -->
-          <div
-            class="w-full h-40 flex items-end justify-center gap-12 sm:gap-20 relative border-b border-white/5 pb-2"
-          >
-            <!-- Grid lines horizontales -->
-            <div class="absolute top-0 w-full h-[1px] bg-white/5"></div>
-            <div class="absolute top-[50%] w-full h-[1px] bg-white/5"></div>
-
-            <!-- Barra Antes -->
-            <div
-              class="w-16 flex flex-col items-center gap-3 relative z-10 group"
-            >
-              <div class="text-[10px] text-gray-500 font-mono absolute -top-6">
-                2-3
-              </div>
-              <div
-                class="w-12 md:w-16 bg-[#1a1a24] border border-white/5 rounded-t-lg h-[15%] transition-all duration-300"
-              >
-              </div>
-              <span class="text-xs text-gray-500 font-medium">Antes</span>
-            </div>
-
-            <!-- Barra Después -->
-            <div class="w-16 flex flex-col items-center gap-3 relative z-10">
-              <div
-                class="text-sm text-white font-bold font-mono absolute -top-7 chart-counter"
-              >
-                10-15
-              </div>
-              <div
-                class="w-12 md:w-16 bg-gradient-to-t from-[#6035b8] to-[#8A4FFF] rounded-t-lg h-[90%] shadow-[0_0_25px_rgba(138,79,255,0.4)] relative overflow-hidden bar-after"
-              >
-                <!-- Brillo animado -->
-                <div
-                  class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-transparent via-white/20 to-transparent -translate-y-full flex animate-[shimmer_2s_infinite]"
-                >
+              <!-- Identity -->
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-2">
+                    {p.category}
+                  </p>
+                  <h3 class="text-2xl font-black text-white tracking-tight">
+                    {p.name}
+                  </h3>
+                  <p class="text-gray-500 text-sm mt-1">{p.subtitle}</p>
                 </div>
+                <span class="shrink-0 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  Activo
+                </span>
               </div>
-              <span class="text-xs text-white font-bold">Después</span>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2">
+                {p.tags.map((tag) => (
+                  <span class="text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Project screenshot -->
+              <div class="rounded-xl overflow-hidden border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+                <img
+                  src={p.image}
+                  alt={`Captura de pantalla del proyecto ${p.name}`}
+                  title={`Proyecto ${p.name} — Nextzy Agency`}
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="500"
+                  class="w-full h-[220px] object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              </div>
+
+              <!-- Description -->
+              <p class="text-gray-400 text-sm leading-relaxed">{p.description}</p>
+
+              <!-- Link -->
+              <div class="mt-auto pt-2">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Ver proyecto ${p.name}`}
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-[#8A4FFF] hover:text-[#b68ef8] transition-colors duration-300 group/link"
+                >
+                  Ver proyecto
+                  <svg
+                    class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+
             </div>
-          </div>
-        </div>
-      </div>
+          </article>
+        ))
+      }
     </div>
 
-    <!-- Bloque FOMO y CTA -->
-    <div
-      class="max-w-4xl mx-auto text-center bg-[#8A4FFF]/5 border border-[#8A4FFF]/20 rounded-3xl p-8 md:p-12 backdrop-blur-sm relative overflow-hidden cs-footer"
-    >
-      <!-- Efecto Glow de fondo en el card -->
-      <div
-        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[100px] bg-gradient-to-b from-[#8A4FFF]/20 to-transparent pointer-events-none"
-      >
-      </div>
-
-      <p
-        class="text-xl md:text-2xl font-medium text-white mb-8 leading-relaxed max-w-3xl mx-auto shadow-sm"
-      >
-        "<span class="text-gray-400"
-          >Mientras muchas clínicas siguen dependiendo del voz a voz,</span
-        > Go Essence ya está captando clientes todos los días desde Google."
-      </p>
-
-      <a
-        href="#contacto"
-        title="Quiero resultados así para mi web"
-        class="inline-flex items-center justify-center gap-2 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white text-lg font-bold py-4 px-10 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_30px_rgba(138,79,255,0.4)] hover:shadow-[0_0_40px_rgba(138,79,255,0.6)]"
-      >
-        Quiero resultados así
-        <svg
-          class="w-5 h-5 ml-1"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg
-        >
-      </a>
-    </div>
   </div>
 </section>
 
@@ -483,107 +154,29 @@
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Animación de aparición general
-    gsap.from(".cs-header", {
-      y: 30,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: { trigger: "#casos", start: "top 80%" },
-    });
-
-    gsap.from(".cs-left > *", {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power2.out",
-      scrollTrigger: { trigger: ".cs-left", start: "top 85%" },
-    });
-
-    gsap.from(".cs-right > *", {
-      x: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out",
-      delay: 0.2,
-      scrollTrigger: { trigger: ".cs-right", start: "top 85%" },
-    });
-
-    // Animación Gráfica de Línea (Draw SVG Effect - simplificado)
-    const lineChart = document.querySelector(".chart-line");
-    if (lineChart) {
-      const length = (lineChart as SVGPathElement).getTotalLength();
-      gsap.set(lineChart, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
-
-      gsap.to(lineChart, {
-        strokeDashoffset: 0,
-        duration: 2,
-        ease: "power2.inOut",
-        scrollTrigger: {
-          trigger: ".cs-right",
-          start: "top 75%",
-        },
-      });
-
-      gsap.to(".chart-area", {
+    gsap.fromTo(
+      ".proj-header",
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
         opacity: 1,
-        duration: 1.5,
-        delay: 1,
-        ease: "power1.inOut",
-        scrollTrigger: {
-          trigger: ".cs-right",
-          start: "top 75%",
-        },
-      });
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: "#proyectos", start: "top 80%" },
+      }
+    );
 
-      gsap.from(".chart-point", {
-        scale: 0,
-        opacity: 0,
-        transformOrigin: "center",
-        duration: 0.5,
-        delay: 1.8,
-        ease: "back.out(2)",
-        scrollTrigger: {
-          trigger: ".cs-right",
-          start: "top 75%",
-        },
-      });
-    }
-
-    // Animación Gráfica de Barras
-    gsap.from(".bar-after", {
-      height: "15%",
-      duration: 1.5,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".bar-after",
-        start: "top 85%",
-      },
-    });
-
-    gsap.from(".cs-footer", {
-      y: 30,
-      opacity: 0,
-      duration: 1,
-      delay: 0.2,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".cs-footer", start: "top 85%" },
-    });
+    gsap.fromTo(
+      ".proj-cards > article",
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: { trigger: ".proj-cards", start: "top 90%" },
+      }
+    );
   });
 </script>
-
-<style>
-  @keyframes shimmer {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
-  }
-</style>
