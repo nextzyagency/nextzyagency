@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/ui/Header.astro';
+import Footer from '../components/sections/Footer.astro';
+
+const projects = [
+  {
+    category: "Estética & Bienestar",
+    name: "Go Essence",
+    subtitle: "Clínica de estética en Barranquilla",
+    tags: ["SEO Local", "Landing Page", "Copy Persuasivo"],
+    image: "/imagenes/testimonials/go-essence.png",
+    description:
+      "Pasó de depender exclusivamente del voz a voz a generar citas constantes desde Google cada semana, con una estrategia enfocada en SEO local y conversión.",
+    challenge:
+      "La clínica no tenía presencia digital y perdía clientes ante competidores con peor servicio pero mayor visibilidad online.",
+    solution:
+      "Diseñamos una landing page orientada a conversión con SEO local agresivo, copy persuasivo y estructura pensada para generar citas desde el primer día.",
+    result: "Citas semanales constantes desde Google en menos de 60 días.",
+    url: "https://go-essence.pages.dev",
+  },
+  {
+    category: "Salud & Odontología",
+    name: "Oralproface",
+    subtitle: "Clínica odontológica de especialidades",
+    tags: ["SEO On-Page", "Diseño Web", "Optimización de Velocidad"],
+    image: "/imagenes/testimonials/oralproface.png",
+    description:
+      "Rediseño completo orientado a conversión y SEO On-Page, logrando posicionamiento en la primera página de Google y duplicando las consultas mensuales.",
+    challenge:
+      "Contaban con un sitio web desactualizado, lento y sin estrategia SEO, lo que les impedía competir en búsquedas locales relevantes.",
+    solution:
+      "Rediseño completo con arquitectura de información clara, optimización de velocidad y SEO On-Page técnico orientado a palabras clave de alta intención.",
+    result: "Primera página de Google y el doble de consultas mensuales.",
+    url: "https://oralproface.pages.dev",
+  },
+];
+---
+
+<Layout
+  title="Portafolio | Nextzy Agency — Proyectos de Diseño Web y SEO"
+  description="Conoce los proyectos más recientes de Nextzy Agency. Casos reales de diseño web profesional, SEO local y conversión para negocios en América Latina."
+  canonicalURL="https://www.nextzyagency.online/portafolio"
+>
+  <Header />
+
+  <main class="w-full">
+
+    <!-- HERO -->
+    <section id="portafolio-hero" class="relative w-full pt-40 pb-20 md:pt-48 md:pb-28 overflow-hidden">
+
+      <!-- Background glows -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#8A4FFF]/10 blur-[140px] rounded-full pointer-events-none"></div>
+      <div class="absolute bottom-0 right-0 w-[300px] h-[300px] bg-purple-900/15 blur-[100px] rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 w-full max-w-5xl mx-auto px-6 text-center">
+
+        <!-- Eyebrow -->
+        <div class="inline-block text-[#8A4FFF] font-mono tracking-widest uppercase text-xs font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full backdrop-blur-sm mb-8 hero-label">
+          Casos reales · Resultados medibles
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[1.05] hero-title">
+          Proyectos que<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8]">generan resultados</span>
+        </h1>
+
+        <p class="text-gray-400 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto hero-sub">
+          Marcas reales que confiaron en nuestra metodología y transformaron su presencia digital en crecimiento medible.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- PROJECT LISTING -->
+    <section id="proyectos-lista" class="relative w-full py-16 md:py-24 overflow-hidden">
+
+      <div class="relative z-10 w-full max-w-6xl mx-auto px-6 flex flex-col gap-32">
+
+        {projects.map((p, i) => (
+          <article
+            class:list={["proj-article group grid grid-cols-1 lg:grid-cols-2 gap-12 items-center", i % 2 !== 0 ? "lg:grid-flow-col-dense" : ""]}
+          >
+
+            <!-- Screenshot -->
+            <div class:list={["proj-img relative", i % 2 !== 0 ? "lg:col-start-2" : ""]}>
+              <div class="absolute -inset-4 bg-[#8A4FFF]/10 blur-[60px] rounded-full pointer-events-none"></div>
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Ver proyecto ${p.name} en vivo`}
+                class="block relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_8px_60px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-[#8A4FFF]/40 hover:shadow-[0_8px_80px_rgba(138,79,255,0.2)]"
+              >
+                <!-- Color accent bar -->
+                <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8] z-10"></div>
+                <img
+                  src={p.image}
+                  alt={`Captura de pantalla del proyecto ${p.name} — Nextzy Agency`}
+                  title={`Proyecto ${p.name} — Diseño web profesional por Nextzy Agency`}
+                  loading="lazy"
+                  decoding="async"
+                  width="800"
+                  height="520"
+                  class="w-full h-[300px] md:h-[380px] object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                <!-- Overlay visit -->
+                <div class="absolute inset-0 bg-[#8A4FFF]/0 group-hover:bg-[#8A4FFF]/10 transition-colors duration-500 flex items-center justify-center">
+                  <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#8A4FFF] text-white text-sm font-semibold px-5 py-2 rounded-full shadow-lg">
+                    Ver en vivo →
+                  </span>
+                </div>
+              </a>
+            </div>
+
+            <!-- Content -->
+            <div class:list={["proj-content flex flex-col gap-6", i % 2 !== 0 ? "lg:col-start-1 lg:row-start-1" : ""]}>
+
+              <!-- Identity -->
+              <div>
+                <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-3">{p.category}</p>
+                <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-1">{p.name}</h2>
+                <p class="text-gray-500 text-base">{p.subtitle}</p>
+              </div>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-2">
+                {p.tags.map((tag) => (
+                  <span class="text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{tag}</span>
+                ))}
+                <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+                  Activo
+                </span>
+              </div>
+
+              <!-- Divider -->
+              <div class="h-px w-full bg-white/8"></div>
+
+              <!-- Challenge / Solution / Result -->
+              <div class="flex flex-col gap-5">
+                <div>
+                  <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-1">El reto</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">{p.challenge}</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-1">La solución</p>
+                  <p class="text-gray-300 text-sm leading-relaxed">{p.solution}</p>
+                </div>
+                <div class="bg-[#8A4FFF]/8 border border-[#8A4FFF]/20 rounded-xl px-5 py-4">
+                  <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-1">Resultado</p>
+                  <p class="text-white font-semibold text-sm leading-relaxed">{p.result}</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Ver proyecto ${p.name} en vivo`}
+                class="inline-flex items-center gap-2 text-sm font-semibold text-[#8A4FFF] hover:text-[#b68ef8] transition-colors duration-300 group/link w-fit"
+              >
+                Ver proyecto en vivo
+                <svg
+                  class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="portafolio-cta" class="relative w-full py-24 md:py-32 overflow-hidden">
+
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#8A4FFF]/5 to-transparent pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#8A4FFF]/12 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="relative z-10 w-full max-w-3xl mx-auto px-6 text-center cta-content">
+
+        <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-6">Tu proyecto es el siguiente</p>
+
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6 leading-tight">
+          ¿Listo para tener resultados<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#8A4FFF] to-[#b68ef8]">como estos?</span>
+        </h2>
+
+        <p class="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          Cada proyecto empieza con una conversación. Cuéntanos tu reto y diseñamos la estrategia digital que tu negocio necesita.
+        </p>
+
+        <a
+          href="https://wa.me/573052487564?text=Hola%2C%20vi%20el%20portafolio%20de%20Nextzy%20y%20quiero%20hablar%20de%20mi%20proyecto"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Solicitar proyecto a Nextzy Agency por WhatsApp"
+          class="inline-flex items-center gap-3 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white font-semibold text-base px-8 py-4 rounded-full transition-all duration-300 shadow-[0_0_40px_rgba(138,79,255,0.35)] hover:shadow-[0_0_60px_rgba(138,79,255,0.5)] hover:-translate-y-0.5"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.126 1.534 5.862L0 24l6.335-1.513A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.887 0-3.659-.507-5.19-1.393l-.37-.22-3.763.899.958-3.657-.244-.387A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+          Solicitar mi proyecto
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <Footer />
+
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+
+    // Hero animations
+    gsap.fromTo(".hero-label", { y: 20 }, { y: 0, duration: 0.8, ease: "power3.out", delay: 0.1 });
+    gsap.fromTo(".hero-title", { y: 40 }, { y: 0, duration: 1, ease: "power3.out", delay: 0.2 });
+    gsap.fromTo(".hero-sub",   { y: 30 }, { y: 0, duration: 0.9, ease: "power3.out", delay: 0.35 });
+
+    // Project articles
+    gsap.utils.toArray<HTMLElement>(".proj-article").forEach((article) => {
+      const img     = article.querySelector(".proj-img");
+      const content = article.querySelector(".proj-content");
+
+      if (img) {
+        gsap.fromTo(img, { x: -40 }, {
+          x: 0, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: article, start: "top 80%" },
+        });
+      }
+      if (content) {
+        gsap.fromTo(content, { x: 40 }, {
+          x: 0, duration: 1, ease: "power3.out",
+          scrollTrigger: { trigger: article, start: "top 80%" },
+        });
+      }
+    });
+
+    // CTA
+    gsap.fromTo(".cta-content", { y: 50 }, {
+      y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: "#portafolio-cta", start: "top 85%" },
+    });
+
+  });
+</script>
