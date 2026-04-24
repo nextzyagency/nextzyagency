@@ -26,7 +26,7 @@ const projects = [
     tags: ["SEO On-Page", "Diseño Web", "Optimización de Velocidad"],
     image: "/imagenes/testimonials/oralproface.png",
     description:
-      "Rediseño completo orientado a conversión y SEO On-Page, logrando posicionamiento en la primera página de Google y duplicando las consultas mensuales.",
+      "Rediseño completo orientado a conversión y SEO On-Page, logrando posicionamiento en la primera página de Google and duplicando las consultas mensuales.",
     challenge:
       "Contaban con un sitio web desactualizado, lento y sin estrategia SEO, lo que les impedía competir en búsquedas locales relevantes.",
     solution:
@@ -34,6 +34,25 @@ const projects = [
     result: "Primera página de Google y el doble de consultas mensuales.",
     url: "https://oralproface.pages.dev",
   },
+];
+
+const ecommerceProjects = [
+  {
+    name: "Elite Store",
+    subtitle: "Concepto de tienda de moda premium",
+    image: "/imagenes/testimonials/paginas-prueba/elite-store.png",
+    tags: ["Astro", "Tailwind", "GSAP"],
+    description: "Una experiencia de compra minimalista diseñada para marcas de moda que buscan exclusividad y rapidez.",
+    url: "https://elite-store-demo.pages.dev/",
+  },
+  {
+    name: "Nutriva Global",
+    subtitle: "Plataforma de suplementación avanzada",
+    image: "/imagenes/testimonials/paginas-prueba/Nutri-global.png",
+    tags: ["E-commerce", "UI/UX", "High Performance"],
+    description: "Diseño enfocado en la claridad del producto y la facilidad de navegación para maximizar el ticket promedio.",
+    url: "https://nutriva-global.pages.dev/",
+  }
 ];
 ---
 
@@ -180,6 +199,76 @@ const projects = [
       </div>
     </section>
 
+    <!-- ECOMMERCE PROJECTS -->
+    <section id="proyectos-ecommerce" class="relative w-full py-24 md:py-32 bg-black/40 border-y border-white/5 overflow-hidden">
+      
+      <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-purple-900/30 blur-[120px] rounded-full"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#8A4FFF]/20 blur-[120px] rounded-full"></div>
+      </div>
+
+      <div class="relative z-10 w-full max-w-6xl mx-auto px-6">
+        
+        <div class="text-center mb-20 ecomm-header">
+          <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">Proyectos Ecommerce</h2>
+          <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+            Estos proyectos no están vinculados a ninguna empresa real, son proyectos de propios de la agencia para demostrar nuestras capacidades en comercio electrónico de alto rendimiento.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {ecommerceProjects.map((ep) => (
+            <div class="ecomm-card group relative bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden hover:border-[#8A4FFF]/30 transition-all duration-500 flex flex-col">
+              <div class="aspect-[16/10] overflow-hidden">
+                <img 
+                  src={ep.image} 
+                  alt={`Proyecto Ecommerce ${ep.name}`} 
+                  title={`Proyecto ${ep.name} — Nextzy Agency`}
+                  loading="lazy" 
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div class="p-8 flex-grow flex flex-col">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {ep.tags.map(tag => (
+                    <span class="text-[10px] font-mono text-gray-400 bg-white/5 border border-white/10 px-2 py-1 rounded uppercase tracking-wider">{tag}</span>
+                  ))}
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-[#8A4FFF] transition-colors duration-300">{ep.name}</h3>
+                <p class="text-gray-500 text-sm mb-4 font-medium">{ep.subtitle}</p>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">{ep.description}</p>
+                
+                <div class="mt-auto">
+                  <a
+                    href={ep.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Ver demo de ${ep.name}`}
+                    class="inline-flex items-center gap-2 text-sm font-semibold text-[#8A4FFF] hover:text-[#b68ef8] transition-colors duration-300 group/link"
+                  >
+                    Ver proyecto demo
+                    <svg
+                      class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Hover border glow -->
+              <div class="absolute inset-0 border-2 border-transparent group-hover:border-[#8A4FFF]/20 rounded-2xl pointer-events-none transition-all duration-500"></div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
     <!-- CTA SECTION -->
     <section id="portafolio-cta" class="relative w-full py-24 md:py-32 overflow-hidden">
 
@@ -253,6 +342,19 @@ const projects = [
           scrollTrigger: { trigger: article, start: "top 80%" },
         });
       }
+    });
+
+    // Ecommerce section animations
+    gsap.fromTo(".ecomm-header", { y: 30 }, {
+      y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: "#proyectos-ecommerce", start: "top 85%" }
+    });
+
+    gsap.utils.toArray<HTMLElement>(".ecomm-card").forEach((card, i) => {
+      gsap.fromTo(card, { y: 40 }, {
+        y: 0, duration: 1, ease: "power3.out", delay: i * 0.1,
+        scrollTrigger: { trigger: card, start: "top 90%" }
+      });
     });
 
     // CTA
