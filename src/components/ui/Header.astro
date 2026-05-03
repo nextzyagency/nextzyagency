@@ -1,25 +1,66 @@
 ---
 // Header.astro
 ---
-<header id="main-header" class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-5xl z-50 rounded-full px-5 py-3 flex items-center justify-between bg-[#1f2229]/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-300">
 
+<header
+  id="main-header"
+  class="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-5xl z-50 rounded-full px-5 py-3 flex items-center justify-between bg-[#1f2229]/80 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all duration-300"
+>
   <!-- Logo -->
   <div class="flex-1 flex justify-center sm:justify-start">
-    <a href="/" title="Nextzy Agency - Inicio" aria-label="Ir al inicio de Nextzy Agency" class="flex flex-col items-center sm:items-end leading-none select-none">
+    <a
+      href="/"
+      title="Nextzy Agency - Inicio"
+      aria-label="Ir al inicio de Nextzy Agency"
+      class="flex flex-col items-center sm:items-end leading-none select-none"
+    >
       <div class="flex items-center">
-        <span class="font-bold text-2xl tracking-tight text-[#e2e8f0]">nextzy</span>
+        <span class="font-bold text-2xl tracking-tight text-[#e2e8f0]"
+          >nextzy</span
+        >
       </div>
-      <span class="text-[10px] text-gray-400 font-medium tracking-widest uppercase mt-[2px]">agency</span>
+      <span
+        class="text-[10px] text-gray-400 font-medium tracking-widest uppercase mt-[2px]"
+        >agency</span
+      >
     </a>
   </div>
 
   <!-- Links -->
-  <nav aria-label="Navegación principal" class="hidden md:flex flex-1 justify-center gap-2 lg:gap-3">
-    <a href="/" title="Ir al inicio" class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5">Inicio</a>
-    <a href="/#casos" title="Casos de éxito" class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5">Resultados</a>
-    <a href="/#servicios" title="Planes y servicios" class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5">Planes</a>
-    <a href="/portafolio" title="Ver portafolio de proyectos de Nextzy Agency" class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5">Portafolio</a>
-    <a href="/#contacto" title="Contactar a Nextzy Agency" class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5">Contacto</a>
+  <nav
+    aria-label="Navegación principal"
+    class="hidden md:flex flex-1 justify-center gap-2 lg:gap-3"
+  >
+    <a
+      href="/"
+      title="Ir al inicio"
+      class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5"
+      >Inicio</a
+    >
+    <a
+      href="/#proyectos"
+      title="Casos de éxito"
+      class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5"
+      >Resultados</a
+    >
+    <a
+      href="/#servicios"
+      title="Planes y servicios"
+      class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5"
+      >Planes</a
+    >
+    <a
+      href="/portafolio"
+      title="Ver portafolio de proyectos de Nextzy Agency"
+      class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5"
+      >Portafolio</a
+    >
+    <a
+      href="/#contacto"
+      title="Contactar a Nextzy Agency"
+      class="text-xs lg:text-sm font-medium text-gray-300 hover:text-white transition-colors px-3 lg:px-5 py-1.5 rounded-full border border-gray-600/60 hover:border-gray-400 bg-white/5"
+      >Contacto</a
+    >
   </nav>
 
   <!-- CTA -->
@@ -35,19 +76,29 @@
 </header>
 
 <script>
-  import gsap from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const header = document.getElementById('main-header');
+  const header = document.getElementById("main-header");
 
   if (header) {
     ScrollTrigger.create({
-      start: 'top -50px',
+      start: "top -50px",
       end: 99999,
-      onEnter: () => gsap.to(header, { backgroundColor: 'rgba(21, 25, 33, 0.95)', y: -5, duration: 0.3 }),
-      onLeaveBack: () => gsap.to(header, { backgroundColor: 'rgba(31, 34, 41, 0.8)', y: 0, duration: 0.3 })
+      onEnter: () =>
+        gsap.to(header, {
+          backgroundColor: "rgba(21, 25, 33, 0.95)",
+          y: -5,
+          duration: 0.3,
+        }),
+      onLeaveBack: () =>
+        gsap.to(header, {
+          backgroundColor: "rgba(31, 34, 41, 0.8)",
+          y: 0,
+          duration: 0.3,
+        }),
     });
   }
 </script>
