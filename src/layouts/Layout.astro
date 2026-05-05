@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -21,45 +21,54 @@ const schemaOrg = JSON.stringify({
     {
       "@type": "Organization",
       "@id": "https://www.nextzyagency.online/#organization",
-      "name": "Nextzy Agency",
-      "url": "https://www.nextzyagency.online/",
-      "logo": {
+      name: "Nextzy Agency",
+      url: "https://www.nextzyagency.online/",
+      logo: {
         "@type": "ImageObject",
-        "url": "https://www.nextzyagency.online/logos/nextzy-logo.svg"
+        url: "https://www.nextzyagency.online/logos/nextzy-logo.svg",
       },
-      "contactPoint": {
+      contactPoint: {
         "@type": "ContactPoint",
-        "telephone": "+57-305-248-7564",
-        "contactType": "customer service",
-        "availableLanguage": "Spanish"
+        telephone: "+57-305-248-7564",
+        contactType: "customer service",
+        availableLanguage: "Spanish",
       },
-      "sameAs": [
+      sameAs: [
         "https://www.instagram.com/nextzyautomations/",
-        "https://github.com/nextzyagency"
+        "https://github.com/nextzyagency",
       ],
-      "description": "Agencia de diseño web profesional especializada en landing pages, webs corporativas y e-commerce optimizados para SEO y conversión.",
-      "areaServed": "América Latina",
-      "knowsAbout": ["Diseño Web", "SEO", "Landing Pages", "E-commerce", "Desarrollo Frontend"]
+      description:
+        "Agencia de diseño web profesional especializada en landing pages, webs corporativas y e-commerce optimizados para SEO y conversión.",
+      areaServed: "América Latina",
+      knowsAbout: [
+        "Diseño Web",
+        "SEO",
+        "Landing Pages",
+        "E-commerce",
+        "Desarrollo Frontend",
+      ],
     },
     {
       "@type": "WebPage",
       "@id": "https://www.nextzyagency.online/#webpage",
-      "url": "https://www.nextzyagency.online/",
-      "name": "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
-      "description": "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
-      "inLanguage": "es",
-      "isPartOf": { "@id": "https://www.nextzyagency.online/#organization" },
-      "about": { "@id": "https://www.nextzyagency.online/#organization" }
+      url: "https://www.nextzyagency.online/",
+      name: "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
+      description:
+        "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
+      inLanguage: "es",
+      isPartOf: { "@id": "https://www.nextzyagency.online/#organization" },
+      about: { "@id": "https://www.nextzyagency.online/#organization" },
     },
     {
       "@type": "Service",
       "@id": "https://www.nextzyagency.online/#services",
-      "name": "Diseño y Desarrollo Web",
-      "provider": { "@id": "https://www.nextzyagency.online/#organization" },
-      "serviceType": ["Landing Page", "Página Web Corporativa", "E-Commerce"],
-      "description": "Creamos landing pages, webs corporativas y tiendas online con diseño profesional, SEO integrado y enfoque en la conversión de clientes."
-    }
-  ]
+      name: "Diseño y Desarrollo Web",
+      provider: { "@id": "https://www.nextzyagency.online/#organization" },
+      serviceType: ["Landing Page", "Página Web Corporativa", "E-Commerce"],
+      description:
+        "Creamos landing pages, webs corporativas y tiendas online con diseño profesional, SEO integrado y enfoque en la conversión de clientes.",
+    },
+  ],
 });
 ---
 
@@ -74,9 +83,15 @@ const schemaOrg = JSON.stringify({
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <meta name="author" content="Nextzy Agency" />
-    <meta name="keywords" content="diseño web profesional, agencia web, landing page, página web para negocios, desarrollo web, SEO, posicionamiento web, pagina web que vende, web corporativa, ecommerce" />
+    <meta
+      name="keywords"
+      content="diseño web profesional, agencia web, landing page, página web para negocios, desarrollo web, SEO, posicionamiento web, pagina web que vende, web corporativa, ecommerce"
+    />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
@@ -84,10 +99,16 @@ const schemaOrg = JSON.stringify({
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={`https://www.nextzyagency.online${ogImage}`} />
+    <meta
+      property="og:image"
+      content={`https://www.nextzyagency.online${ogImage}`}
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Nextzy Agency - Diseño Web Profesional" />
+    <meta
+      property="og:image:alt"
+      content="Nextzy Agency - Diseño Web Profesional"
+    />
     <meta property="og:site_name" content="Nextzy Agency" />
     <meta property="og:locale" content="es_CO" />
 
@@ -96,8 +117,14 @@ const schemaOrg = JSON.stringify({
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={`https://www.nextzyagency.online${ogImage}`} />
-    <meta name="twitter:image:alt" content="Nextzy Agency - Diseño Web Profesional" />
+    <meta
+      name="twitter:image"
+      content={`https://www.nextzyagency.online${ogImage}`}
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Nextzy Agency - Diseño Web Profesional"
+    />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -119,49 +146,52 @@ const schemaOrg = JSON.stringify({
 
     <!-- Meta Pixel Code -->
     <script is:inline>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1854766628466063');
-    fbq('track', 'PageView');
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1854766628466063');
+      fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1854766628466063&ev=PageView&noscript=1"
-    /></noscript>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1854766628466063&ev=PageView&noscript=1"/>
+    </noscript>
     <!-- End Meta Pixel Code -->
   </head>
-  <body class="bg-nextzy-black text-nextzy-gray-300 font-sora antialiased overflow-x-hidden selection:bg-nextzy-purple selection:text-white flex flex-col min-h-screen relative">
-
+  <body
+    class="bg-nextzy-black text-nextzy-gray-300 font-sora antialiased overflow-x-hidden selection:bg-nextzy-purple selection:text-white flex flex-col min-h-screen relative"
+  >
     <!-- Global Mouse Glow -->
     <div
       id="mouse-glow"
       aria-hidden="true"
       class="fixed inset-0 pointer-events-none transition-opacity duration-300 opacity-0 mix-blend-screen z-0"
       style="background: radial-gradient(circle 350px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(138, 79, 255, 0.15), transparent 80%);"
-    ></div>
+    >
+    </div>
 
     <main class="w-full relative z-10">
       <slot />
     </main>
 
     <script>
-      const glow = document.getElementById('mouse-glow');
+      const glow = document.getElementById("mouse-glow");
 
-      window.addEventListener('mousemove', (e) => {
+      window.addEventListener("mousemove", (e) => {
         if (glow) {
-          glow.style.opacity = '1';
-          glow.style.setProperty('--mouse-x', `${e.clientX}px`);
-          glow.style.setProperty('--mouse-y', `${e.clientY}px`);
+          glow.style.opacity = "1";
+          glow.style.setProperty("--mouse-x", `${e.clientX}px`);
+          glow.style.setProperty("--mouse-y", `${e.clientY}px`);
         }
       });
 
-      document.addEventListener('mouseleave', () => {
-        if (glow) glow.style.opacity = '0';
+      document.addEventListener("mouseleave", () => {
+        if (glow) glow.style.opacity = "0";
       });
     </script>
   </body>
