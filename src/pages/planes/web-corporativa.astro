@@ -1,0 +1,460 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import Star from "../../components/ui/Star.astro";
+
+// Color de acento: PÚRPURA (igual que la card de Services)
+const accent = {
+  hex: "#8A4FFF",
+  glow: "rgba(138,79,255,0.4)",
+  glowStrong: "rgba(138,79,255,0.6)",
+  bgLight: "bg-nextzy-purple/10",
+  border: "border-nextzy-purple/30",
+  text: "text-nextzy-purple-light",
+  gradient: "from-nextzy-purple-light to-nextzy-purple-dark",
+  badge: "border-nextzy-purple/30 bg-nextzy-purple/10 text-nextzy-purple-light",
+  iconBg: "bg-nextzy-purple/20",
+  iconBorder: "border-nextzy-purple-light/30",
+  sweepColor: "#8A4FFF",
+  sweepShadow: "rgba(138,79,255,0.4)",
+};
+
+const features = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />`,
+    title: "Hasta 5 secciones completamente a medida",
+    desc: "Diseñamos cada sección según tu visión: servicios, equipo, galería, contacto y más. El cliente elige imágenes y contenido. Tu empresa tal como la imaginas.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />`,
+    title: "SEO técnico para posicionarse en Google",
+    desc: "Metaetiquetas optimizadas, encabezados correctos, velocidad de carga e imágenes comprimidas. Tu web lista para rankear desde el primer día sin costos extras.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />`,
+    title: "5 correos corporativos + dominio gratis",
+    desc: "5 cuentas de correo con tu dominio (ej: contacto@tuempresa.co) y el dominio .com o .co por 1 año. Proyecta seriedad desde el primer mensaje.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 4.5h3" />`,
+    title: "Diseño 100% responsive",
+    desc: "Tu web se verá impecable en cualquier dispositivo. Diseñamos con el enfoque mobile-first para garantizar la mejor experiencia sin importar cómo te encuentren.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />`,
+    title: "Chat de WhatsApp integrado",
+    desc: "Conectamos directamente a tus clientes con tu línea de WhatsApp. Botón flotante en todas las secciones para maximizar el contacto y cerrar más negocios.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l5.654-4.654m5.96-4.767 3.029-2.496a1.5 1.5 0 0 0-1.082-2.646H14.17a1.5 1.5 0 0 0-1.082 2.646l3.029 2.496" />`,
+    title: "1 mes de mantenimiento incluido",
+    desc: "Después del lanzamiento te acompañamos 30 días con ajustes de contenido, correcciones visuales y cualquier cambio menor que tu negocio necesite.",
+  },
+];
+
+const forWho = [
+  "Tienes una empresa establecida y quieres una presencia digital profesional.",
+  "Quieres que Google te muestre cuando buscan tus servicios en tu ciudad.",
+  "Necesitas una web con múltiples secciones que represente toda tu oferta.",
+  "Tu competencia ya tiene web y quieres superarlos en diseño y posicionamiento.",
+  "Quieres proyectar autoridad y confianza desde el primer contacto digital.",
+  "Buscas correos corporativos para comunicaciones más profesionales.",
+];
+
+const faqs = [
+  {
+    q: "¿Puedo elegir el diseño y los colores de la web?",
+    a: "Sí. Antes de empezar el desarrollo te enviamos una propuesta de diseño basada en tu identidad de marca. Tú apruebas el estilo antes de que escribamos una sola línea de código.",
+  },
+  {
+    q: "¿Qué secciones puedo incluir?",
+    a: "Hasta 5 secciones a elegir entre: Inicio/Hero, Sobre nosotros, Servicios, Equipo, Galería, Preguntas frecuentes, Testimonios y Contacto.",
+  },
+  {
+    q: "¿La web queda visible en Google desde el primer día?",
+    a: "La indexación puede tardar entre 1 y 4 semanas. Configuramos Search Console y enviamos el sitemap para acelerar el proceso.",
+  },
+  {
+    q: "¿Puedo agregar más secciones en el futuro?",
+    a: "Claro. Una vez entregado el proyecto puedes contratar secciones adicionales o una actualización completa con nuestros planes de mantenimiento mensual.",
+  },
+];
+---
+
+<Layout
+  title="Web Corporativa Profesional | Plan Nextzy Agency"
+  description="Conoce el plan Web Corporativa de Nextzy Agency: hasta 5 secciones a medida, SEO técnico desde el día 1, 5 correos corporativos y dominio gratis por 1 año."
+>
+  <Header />
+  <main class="w-full">
+    <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+    <section
+      class="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 px-6"
+    >
+      <!-- Sweep line púrpura -->
+      <div
+        class="opacity-40 absolute bottom-0 left-0 w-full h-[35vh] z-0 overflow-hidden pointer-events-none flex items-end justify-center"
+      >
+        <div
+          class="w-[150%] md:w-[120%] h-[150%] md:h-[200%] border-t-[3px] border-[#8A4FFF] rounded-[100%] absolute top-[50%] -translate-y-[20%] opacity-80 shadow-[0_-10px_60px_rgba(138,79,255,0.4)]"
+        >
+        </div>
+      </div>
+
+      <!-- Spotlight esquina superior derecha -->
+      <div
+        class="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 blur-[100px] rounded-full pointer-events-none z-0 translate-x-1/4 -translate-y-1/4"
+      >
+      </div>
+      <div
+        class="absolute -top-[10%] right-[15%] w-[150px] h-[120%] bg-gradient-to-b from-white/10 to-transparent rotate-[35deg] blur-xl origin-top pointer-events-none z-0"
+      >
+      </div>
+
+      <!-- Estrellas decorativas -->
+      <Star
+        class="absolute top-32 left-10 w-6 h-6 opacity-30 hidden md:block text-nextzy-purple-light"
+      />
+      <Star
+        class="absolute bottom-20 right-16 w-8 h-8 opacity-40 hidden md:block text-nextzy-gray-500"
+      />
+
+      <!-- Dot pattern bottom-left -->
+      <div
+        class="absolute bottom-20 left-12 z-0 opacity-30 flex flex-wrap w-[80px] gap-3 pointer-events-none hidden md:flex"
+      >
+        {
+          Array.from({ length: 20 }).map(() => (
+            <div class="w-1.5 h-1.5 bg-gray-500 rounded-full" />
+          ))
+        }
+      </div>
+
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <!-- Breadcrumb -->
+        <nav
+          class="flex items-center justify-center gap-2 text-sm text-nextzy-gray-500 mb-8"
+          aria-label="Breadcrumb"
+        >
+          <a
+            href="/"
+            title="Inicio - Nextzy Agency"
+            class="hover:text-nextzy-purple-light transition-colors duration-200"
+            >Inicio</a
+          >
+          <span>/</span>
+          <a
+            href="/#servicios"
+            title="Ver todos los planes"
+            class="hover:text-nextzy-purple-light transition-colors duration-200"
+            >Planes</a
+          >
+          <span>/</span>
+          <span class="text-nextzy-purple-light">Web Corporativa</span>
+        </nav>
+
+        <!-- Badge mono -->
+        <div
+          class="text-nextzy-purple-light font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm"
+        >
+          // Plan Web Corporativa
+        </div>
+
+        <h1
+          class="text-[clamp(1.8rem,3.8vw,4rem)] font-black tracking-tighter uppercase leading-[1.1] mb-6 text-nextzy-white"
+        >
+          Tu negocio organizado<br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+            >en una web profesional</span
+          >
+        </h1>
+
+        <p
+          class="text-nextzy-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
+        >
+          Una web corporativa diseñada a medida con SEO integrado desde el
+          primer día. Para empresas que quieren ser la primera opción en su
+          sector.
+        </p>
+
+        <a
+          href="/#contacto"
+          title="Solicitar Web Corporativa - Nextzy Agency"
+          class="inline-flex items-center gap-3 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white font-bold text-sm tracking-widest uppercase px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+        >
+          Quiero este plan
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ QUE INCLUYE ══════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden"
+    >
+      <Star
+        class="absolute top-10 right-10 w-12 h-12 text-nextzy-purple-light opacity-20"
+      />
+      <Star
+        class="absolute bottom-10 left-10 w-8 h-8 text-nextzy-gray-500 opacity-20"
+      />
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-24">
+          <div
+            class="text-nextzy-purple-light font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Que incluye
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Todo para que tu empresa<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+              >destaque online</span
+            >
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full">
+          {
+            features.map((f, i) => (
+              <div
+                class={`relative h-full ${i === 1 || i === 4 ? "md:translate-y-8" : ""}`}
+              >
+                <div class="bg-[#12161f] border border-white/5 rounded-3xl p-8 lg:p-10 flex flex-col gap-6 hover:bg-[#151a25] transition-colors duration-500 h-full">
+                  <div class="w-14 h-14 rounded-2xl bg-nextzy-purple/20 flex items-center justify-center border border-nextzy-purple-light/30 text-nextzy-purple-light">
+                    <svg
+                      class="w-7 h-7"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      set:html={f.icon}
+                    />
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-xl md:text-2xl font-bold text-nextzy-white uppercase tracking-tight">
+                      {f.title}
+                    </h3>
+                    <p class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                      {f.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ PARA QUIEN ES ══════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center overflow-hidden"
+    >
+      <div class="relative z-10 w-full max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            class="text-nextzy-purple-light font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Para quien es
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Este plan es <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+              >ideal si...</span
+            >
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {
+            forWho.map((item) => (
+              <div class="bg-[#12161f] border border-white/5 rounded-3xl p-7 flex items-start gap-4 hover:bg-[#151a25] transition-colors duration-500">
+                <div class="w-8 h-8 rounded-xl bg-nextzy-purple/20 border border-nextzy-purple-light/30 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 text-nextzy-purple-light"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 12.75 6 6 9-13.5"
+                    />
+                  </svg>
+                </div>
+                <span class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                  {item}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════ FAQ ══════════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center overflow-hidden"
+    >
+      <Star
+        class="absolute top-10 left-10 w-8 h-8 opacity-20 text-nextzy-purple-light"
+      />
+      <div class="relative z-10 w-full max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            class="text-nextzy-purple-light font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Preguntas frecuentes
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Resolvemos<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+              >tus dudas</span
+            >
+          </h2>
+        </div>
+        <div class="flex flex-col gap-5">
+          {
+            faqs.map((faq) => (
+              <div class="bg-[#12161f] border border-white/5 rounded-3xl p-8 hover:bg-[#151a25] transition-colors duration-500">
+                <h3 class="text-nextzy-white font-bold text-lg uppercase tracking-tight mb-3">
+                  {faq.q}
+                </h3>
+                <p class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 flex flex-col items-center justify-center overflow-hidden"
+    >
+      <Star
+        class="absolute bottom-16 right-12 w-8 h-8 opacity-30 text-nextzy-purple-light hidden md:block"
+      />
+
+      <div class="relative z-10 max-w-4xl mx-auto text-center w-full">
+        <h2
+          class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.05] mb-6"
+        >
+          ¿Listo para tu<br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]"
+          >
+            Web Corporativa?
+          </span>
+        </h2>
+        <p
+          class="text-nextzy-gray-300 text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+        >
+          Escríbenos hoy y en menos de 48 horas te enviamos una propuesta
+          personalizada.
+        </p>
+        <a
+          href="/#contacto"
+          title="Solicitar Web Corporativa - Nextzy Agency"
+          class="inline-flex items-center gap-3 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white font-bold text-sm tracking-widest uppercase px-10 py-5 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_0_25px_rgba(138,79,255,0.4)]"
+        >
+          Quiero mi web corporativa
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    "h1",
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.2 },
+  );
+  gsap.fromTo(
+    "h1 + p",
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.8 },
+  );
+
+  document.querySelectorAll("section").forEach((section, i) => {
+    if (i === 0) return;
+    const title = section.querySelector("h2");
+    if (title) {
+      gsap.fromTo(
+        title,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: title, start: "top 80%" },
+        },
+      );
+    }
+    section.querySelectorAll(".bg-\\[\\#12161f\\]").forEach((card: any, j) => {
+      gsap.fromTo(
+        card,
+        { y: 40, opacity: 0, scale: 0.97 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          delay: j * 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 85%" },
+        },
+      );
+    });
+  });
+</script>

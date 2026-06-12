@@ -1,0 +1,454 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import Star from "../../components/ui/Star.astro";
+
+// Color de acento: ESMERALDA (igual que la card de Services)
+const sweepColor = "#10B981";
+const sweepShadow = "rgba(16,185,129,0.4)";
+
+const features = [
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />`,
+    title: "Catálogo con base de datos hasta 15 productos",
+    desc: "Gestiona tu catálogo desde un panel intuitivo. Agrega, edita o elimina productos, precios e imágenes sin tocar código. Escalable según tu crecimiento.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />`,
+    title: "Pasarelas de pago + carrito de compras",
+    desc: "Integramos Wompi, PayU o Stripe para que tus clientes paguen con tarjeta, PSE o efectivo. El carrito está optimizado para reducir el abandono y cerrar más ventas.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 8.25h3m-3 4.5h3" />`,
+    title: "Diseño mobile-first para comprar desde el celular",
+    desc: "Más del 70% de las compras online se hacen desde el celular. Botones, imágenes y checkout optimizados para que la compra sea fluida en cualquier dispositivo.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />`,
+    title: "SSL + hosting incluido por 1 año",
+    desc: "Tu tienda opera bajo HTTPS desde el primer día. El SSL es obligatorio para cualquier pasarela de pago y genera confianza inmediata en el comprador.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />`,
+    title: "WhatsApp para soporte de ventas en tiempo real",
+    desc: "Cuando un cliente tiene una duda antes de comprar, el botón de WhatsApp lo conecta directo a tu equipo. Menos abandono, más ventas cerradas.",
+  },
+  {
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />`,
+    title: "Correos corporativos + dominio incluido",
+    desc: "5 cuentas de correo con tu dominio y el dominio .com o .co por 1 año. Tus ventas y soporte salen desde una dirección que refuerza la confianza del cliente.",
+  },
+];
+
+const forWho = [
+  "Tienes una tienda física y quieres empezar a vender también por internet.",
+  "Vendes productos físicos o digitales y necesitas cobrar en línea de forma segura.",
+  "Quieres dejar de depender solo de Instagram o WhatsApp para vender.",
+  "Buscas un catálogo ordenado donde tus clientes puedan ver precios y comprar solos.",
+  "Quieres automatizar pedidos para no tener que responder uno a uno por chat.",
+  "Tu competencia ya vende online y tú no quieres quedarte atrás.",
+];
+
+const faqs = [
+  {
+    q: "¿Cuántos productos puedo vender?",
+    a: "El plan incluye hasta 15 productos por sección. Si necesitas más productos o categorías adicionales, lo evaluamos y te ofrecemos una solución escalable.",
+  },
+  {
+    q: "¿Qué pasarelas de pago están disponibles?",
+    a: "Integramos Wompi, PayU y Stripe. En Colombia recomendamos Wompi por su soporte para PSE, tarjetas y efectivo (Efecty/Bancolombia) sin complicaciones de activación.",
+  },
+  {
+    q: "¿Puedo gestionar mis productos sin saber programar?",
+    a: "Sí. Te entregamos un panel de administración sencillo donde puedes agregar, editar o desactivar productos, actualizar precios e imágenes sin conocimientos técnicos.",
+  },
+  {
+    q: "¿La tienda queda posicionada en Google?",
+    a: "Implementamos SEO técnico base: metaetiquetas de producto, velocidad, imágenes optimizadas. Para posicionamiento más agresivo recomendamos una estrategia de contenidos complementaria.",
+  },
+];
+---
+
+<Layout
+  title="Tienda Online E-Commerce | Plan Nextzy Agency"
+  description="Conoce el plan E-Commerce de Nextzy Agency: catálogo de productos con base de datos, pasarelas de pago integradas (Wompi, PayU, Stripe) y diseño optimizado para la compra online."
+>
+  <Header />
+  <main class="w-full">
+    <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+    <section
+      class="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden pt-32 pb-20 px-6"
+    >
+      <!-- Sweep line esmeralda -->
+      <div
+        class="opacity-40 absolute bottom-0 left-0 w-full h-[35vh] z-0 overflow-hidden pointer-events-none flex items-end justify-center"
+      >
+        <div
+          class="w-[150%] md:w-[120%] h-[150%] md:h-[200%] border-t-[3px] rounded-[100%] absolute top-[50%] -translate-y-[20%] opacity-70"
+          style={`border-color: ${sweepColor}; box-shadow: 0 -10px 60px ${sweepShadow};`}
+        >
+        </div>
+      </div>
+
+      <!-- Spotlight esquina superior derecha -->
+      <div
+        class="absolute top-0 right-0 w-[400px] h-[400px] bg-emerald-400/8 blur-[120px] rounded-full pointer-events-none z-0 translate-x-1/4 -translate-y-1/4"
+      >
+      </div>
+      <div
+        class="absolute -top-[10%] right-[15%] w-[120px] h-[120%] bg-gradient-to-b from-emerald-400/8 to-transparent rotate-[35deg] blur-xl origin-top pointer-events-none z-0"
+      >
+      </div>
+
+      <!-- Estrellas decorativas -->
+      <Star
+        class="absolute top-32 left-10 w-6 h-6 opacity-30 hidden md:block text-emerald-400"
+      />
+      <Star
+        class="absolute bottom-20 right-16 w-8 h-8 opacity-25 hidden md:block text-nextzy-gray-500"
+      />
+
+      <!-- Dot pattern bottom-left -->
+      <div
+        class="absolute bottom-20 left-12 z-0 opacity-20 flex flex-wrap w-[80px] gap-3 pointer-events-none hidden md:flex"
+      >
+        {
+          Array.from({ length: 20 }).map(() => (
+            <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+          ))
+        }
+      </div>
+
+      <div class="relative z-10 w-full max-w-4xl mx-auto text-center">
+        <!-- Breadcrumb -->
+        <nav
+          class="flex items-center justify-center gap-2 text-sm text-nextzy-gray-500 mb-8"
+          aria-label="Breadcrumb"
+        >
+          <a
+            href="/"
+            title="Inicio - Nextzy Agency"
+            class="hover:text-emerald-400 transition-colors duration-200"
+            >Inicio</a
+          >
+          <span>/</span>
+          <a
+            href="/#servicios"
+            title="Ver todos los planes"
+            class="hover:text-emerald-400 transition-colors duration-200"
+            >Planes</a
+          >
+          <span>/</span>
+          <span class="text-emerald-400">E-Commerce</span>
+        </nav>
+
+        <!-- Badge mono -->
+        <div
+          class="text-emerald-300 font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm"
+        >
+          // Plan E-Commerce
+        </div>
+
+        <h1
+          class="text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tighter uppercase leading-[1.05] mb-6 text-nextzy-white"
+        >
+          Tu tienda física,<br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-600"
+            style={`filter: drop-shadow(0 0 20px ${sweepShadow})`}
+          >
+            vendiendo las 24h
+          </span>
+        </h1>
+
+        <p
+          class="text-nextzy-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed font-medium"
+        >
+          Tienda online profesional con catálogo, carrito y pasarela de pago.
+          Para almacenes, tiendas físicas y emprendedores que quieren escalar al
+          mundo digital.
+        </p>
+
+        <a
+          href="/#contacto"
+          title="Solicitar E-Commerce - Nextzy Agency"
+          class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-widest uppercase px-8 py-4 rounded-full transition-all duration-300 hover:scale-[1.02]"
+          style={`box-shadow: 0 0 25px ${sweepShadow};`}
+        >
+          Quiero este plan
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ QUE INCLUYE ══════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center justify-center overflow-hidden"
+    >
+      <Star
+        class="absolute top-10 right-10 w-10 h-10 opacity-20 text-emerald-400"
+      />
+      <Star
+        class="absolute bottom-10 left-10 w-7 h-7 opacity-15 text-nextzy-gray-500"
+      />
+
+      <div class="relative z-10 w-full max-w-7xl mx-auto">
+        <div class="text-center mb-16 md:mb-24">
+          <div
+            class="text-emerald-300 font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Que incluye
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Todo para vender online<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-600"
+              >desde el día 1</span
+            >
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full">
+          {
+            features.map((f, i) => (
+              <div
+                class={`relative h-full ${i === 1 || i === 4 ? "md:translate-y-8" : ""}`}
+              >
+                <div class="bg-[#12161f] border border-white/5 rounded-3xl p-8 lg:p-10 flex flex-col gap-6 hover:bg-[#151a25] transition-colors duration-500 h-full">
+                  <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 flex items-center justify-center border border-emerald-400/30 text-emerald-400">
+                    <svg
+                      class="w-7 h-7"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      set:html={f.icon}
+                    />
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    <h3 class="text-xl md:text-2xl font-bold text-nextzy-white uppercase tracking-tight">
+                      {f.title}
+                    </h3>
+                    <p class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                      {f.desc}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════ PARA QUIEN ES ══════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center overflow-hidden"
+    >
+      <div class="relative z-10 w-full max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            class="text-emerald-300 font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Para quien es
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Este plan es <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-emerald-500"
+              >ideal si...</span
+            >
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {
+            forWho.map((item) => (
+              <div class="bg-[#12161f] border border-white/5 rounded-3xl p-7 flex items-start gap-4 hover:bg-[#151a25] transition-colors duration-500">
+                <div class="w-8 h-8 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 mt-0.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 text-emerald-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m4.5 12.75 6 6 9-13.5"
+                    />
+                  </svg>
+                </div>
+                <span class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                  {item}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════ FAQ ══════════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 lg:px-12 flex flex-col items-center overflow-hidden"
+    >
+      <Star
+        class="absolute top-10 left-10 w-8 h-8 opacity-20 text-emerald-400"
+      />
+      <div class="relative z-10 w-full max-w-4xl mx-auto">
+        <div class="text-center mb-16">
+          <div
+            class="text-emerald-300 font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 rounded-full inline-block"
+          >
+            // Preguntas frecuentes
+          </div>
+          <h2
+            class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.1]"
+          >
+            Resolvemos<br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-emerald-500"
+              >tus dudas</span
+            >
+          </h2>
+        </div>
+        <div class="flex flex-col gap-5">
+          {
+            faqs.map((faq) => (
+              <div class="bg-[#12161f] border border-white/5 rounded-3xl p-8 hover:bg-[#151a25] transition-colors duration-500">
+                <h3 class="text-nextzy-white font-bold text-lg uppercase tracking-tight mb-3">
+                  {faq.q}
+                </h3>
+                <p class="text-nextzy-gray-300 text-sm md:text-base leading-relaxed">
+                  {faq.a}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
+    <section
+      class="relative w-full py-24 md:py-32 px-6 flex flex-col items-center justify-center overflow-hidden"
+    >
+      <Star
+        class="absolute bottom-16 right-12 w-8 h-8 opacity-25 text-emerald-400 hidden md:block"
+      />
+
+      <div class="relative z-10 max-w-4xl mx-auto text-center w-full">
+        <h2
+          class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-nextzy-white uppercase leading-[1.05] mb-6"
+        >
+          ¿Listo para empezar a<br />
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-emerald-500"
+            style={`filter: drop-shadow(0 0 20px ${sweepShadow})`}
+          >
+            vender online?
+          </span>
+        </h2>
+        <p
+          class="text-nextzy-gray-300 text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+        >
+          Escríbenos hoy y en menos de 48 horas te enviamos una propuesta
+          personalizada.
+        </p>
+        <a
+          href="/#contacto"
+          title="Solicitar E-Commerce - Nextzy Agency"
+          class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-widest uppercase px-10 py-5 rounded-full transition-all duration-300 hover:scale-[1.02]"
+          style={`box-shadow: 0 0 30px ${sweepShadow};`}
+        >
+          Quiero mi tienda online
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(
+    "h1",
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power3.out", delay: 0.2 },
+  );
+  gsap.fromTo(
+    "h1 + p",
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out", delay: 0.8 },
+  );
+
+  document.querySelectorAll("section").forEach((section, i) => {
+    if (i === 0) return;
+    const title = section.querySelector("h2");
+    if (title) {
+      gsap.fromTo(
+        title,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: title, start: "top 80%" },
+        },
+      );
+    }
+    section.querySelectorAll(".bg-\\[\\#12161f\\]").forEach((card: any, j) => {
+      gsap.fromTo(
+        card,
+        { y: 40, opacity: 0, scale: 0.97 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          delay: j * 0.1,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 85%" },
+        },
+      );
+    });
+  });
+</script>

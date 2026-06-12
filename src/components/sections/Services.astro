@@ -5,58 +5,32 @@ import Star from '../ui/Star.astro';
 const plans = [
   {
     title: "Landing page",
+    slug: "landing-page",
     color: "blue",
     features: [
-      "Diseño adaptable para móvil",
-      "Certificado de seguridad SSL",
-      "Conexión chat de WhatsApp",
-      "Hosting y dominio por 1 año gratis",
-      "Diseño optimizado para la conversión de visitas en clientes cualificados",
-      "Dominios .com o .co incluidos por 1 año",
-      "hasta 5 correos corporativos completamente gratis",
-      "Diseño e imagenes elegidas por el cliente",
-      "1 mes de mantenimiento incluido"
-
-
+      "Diseño enfocado 100% en convertir visitas en clientes cualificados",
+      "Hosting, dominio .com/.co y SSL incluidos por 1 año",
+      "1 mes de mantenimiento y soporte incluido"
     ]
   },
   {
     title: "Web Corporativa",
+    slug: "web-corporativa",
     color: "purple",
     features: [
-      "Diseño adaptable para móvil",
-      "Certificado de seguridad SSL",
-      "Conexión chat de WhatsApp",
-      "Hosting y dominio por 1 año gratis",
-     
-      "Dominios .com o .co incluidos por 1 año",
-      "hasta 5 correos corporativos completamente gratis",
-      "Diseño e imagenes elegidas por el cliente",
-      "1 mes de mantenimiento incluido",
-      "Hasta 5 secciones distintas",
-      "Optimizado para SEO y adquisición de clientes",
-      "La mejor opcion para posicionarte en google"
+      "Hasta 5 secciones a medida con diseño elegido por el cliente",
+      "Optimización SEO para posicionarte en Google desde el día 1",
+      "5 correos corporativos + dominio .com/.co gratis por 1 año"
     ]
   },
   {
     title: "E-Commerce",
+    slug: "ecommerce",
     color: "emerald",
     features: [
-      "Diseño adaptable para móvil",
-      "Certificado de seguridad SSL",
-      "Conexión chat de WhatsApp",
-      "Hosting y dominio por 1 año gratis",
-      
-      "Dominios .com o .co incluidos por 1 año",
-      "hasta 5 correos corporativos completamente gratis",
-      "Diseño e imagenes elegidas por el cliente",
-      "1 mes de mantenimiento incluido",
-      "Diseño optimizado para la compra de productos online",
-      "Integración con pasarelas de pago",
-      "Sección de productos vinculado a una base de datos",
-      "La mejor opción para almacenes y tiendas físicas",
-      "Hasta 15 productos por seccion",
-      "Pagina de pago y carrito de compras"
+      "Catálogo de productos vinculado a base de datos (hasta 15 por sección)",
+      "Integración con pasarelas de pago y carrito de compras",
+      "Diseño optimizado para la compra online desde cualquier dispositivo"
     ]
   }
 ];
@@ -102,11 +76,11 @@ const getColorClasses = (color: string) => {
             </p>
 
             <a
-              href="#contacto"
-              title={`Solicitar ${plan.title} - Nextzy Agency`}
+              href={`/planes/${plan.slug}`}
+              title={`Ver detalles del plan ${plan.title} - Nextzy Agency`}
               class={`w-full py-4 rounded-xl flex items-center justify-center font-bold text-sm tracking-widest uppercase transition-all duration-300 border ${colors.border} bg-white/5 hover:bg-white/10 text-white mb-8 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]`}
             >
-              Quiero este plan
+              Más información
             </a>
 
             <div class="flex flex-col gap-4 flex-grow tracking-tight">

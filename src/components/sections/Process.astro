@@ -1,78 +1,95 @@
 ---
 // Process.astro
+
+const steps = [
+  {
+    num: "01",
+    label: "Escuchamos",
+    desc: "Entendemos tu negocio, tus objetivos y a tu cliente ideal antes de tomar cualquier decisión.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />`
+  },
+  {
+    num: "02",
+    label: "Analizamos",
+    desc: "Estudiamos tu competencia, palabras clave y oportunidades de posicionamiento en Google.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />`
+  },
+  {
+    num: "03",
+    label: "Diseñamos",
+    desc: "Creamos el diseño visual a medida, con los colores, tipografía e imágenes que representan tu marca.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0H3" />`
+  },
+  {
+    num: "04",
+    label: "Desarrollamos",
+    desc: "Convertimos el diseño en código limpio, rápido y optimizado para SEO con las mejores tecnologías.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />`
+  },
+  {
+    num: "05",
+    label: "Lanzamos",
+    desc: "Publicamos tu web, configuramos SEO técnico y te acompañamos en el post-lanzamiento.",
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 0 1-2.448-2.448 14.9 14.9 0 0 1 .06-.312m-2.24 2.39a4.493 4.493 0 0 0-1.757 4.306 4.493 4.493 0 0 0 4.306-1.758M16.5 9a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />`
+  }
+];
 ---
+
 <section id="proceso" class="w-full relative py-20 px-6 overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    
-    <!-- Encabezado de la Sección -->
+
+    <!-- Encabezado -->
     <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-20 process-header">
-      <div class="flex items-center gap-4 mb-4">
-        <span class="w-8 h-[2px] bg-[#8A4FFF]/50"></span>
-        <span class="text-[#8A4FFF] font-semibold tracking-widest text-sm uppercase">Proceso de Trabajo</span>
-        <span class="w-8 h-[2px] bg-[#8A4FFF]/50"></span>
+      <div class="text-[#8A4FFF] font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full inline-block">
+        // Proceso de Trabajo
       </div>
-      <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-tight tracking-tight text-white mb-6">
-        Un enfoque estructurado para garantizar resultados excepcionales
+      <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black leading-tight tracking-tighter text-white uppercase">
+        Así construimos tu<br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A78BFA] to-[#7C3AED] filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)]">presencia digital</span>
       </h2>
     </div>
 
     <!-- Contenedor del Proceso -->
-    <div class="relative max-w-6xl mx-auto list-none pl-0">
-      
+    <div class="relative max-w-6xl mx-auto">
+
       <!-- Línea Conectora Desktop -->
-      <div class="absolute top-10 left-[10%] w-[80%] h-[2px] bg-gradient-to-r from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 hidden lg:block process-line-desktop"></div>
-      
+      <div class="absolute top-10 left-[5%] w-[90%] h-[2px] bg-gradient-to-r from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 hidden lg:block process-line-desktop"></div>
+
       <!-- Línea Conectora Mobile -->
-      <div class="absolute top-[5%] left-1/2 -translate-x-1/2 w-[2px] h-[90%] bg-gradient-to-b from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 lg:hidden process-line-mobile"></div>
+      <div class="absolute top-[3%] left-1/2 -translate-x-1/2 w-[2px] h-[94%] bg-gradient-to-b from-[#8A4FFF]/0 via-[#8A4FFF]/60 to-[#8A4FFF]/0 lg:hidden process-line-mobile"></div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-8">
-        
-        <!-- Paso 01 -->
-        <div class="relative flex flex-col items-center text-center process-item">
-          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
-            01
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-4">
+        {steps.map((step) => (
+          <div class="relative flex flex-col items-center text-center process-item">
+
+            <!-- Círculo con icono -->
+            <div class="w-20 h-20 rounded-full border border-[#8A4FFF]/40 bg-[#0d1219] flex items-center justify-center z-10 mb-6 drop-shadow-[0_0_24px_rgba(138,79,255,0.25)] group-hover:scale-105 transition-transform duration-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-8 h-8 text-[#8A4FFF]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+                set:html={step.icon}
+              ></svg>
+            </div>
+
+            <!-- Número -->
+            <span class="text-xs font-mono text-[#8A4FFF]/60 tracking-widest uppercase mb-1">{step.num}</span>
+
+            <!-- Título -->
+            <h3 class="text-lg font-bold text-white uppercase tracking-tight mb-2">{step.label}</h3>
+
+            <!-- Descripción -->
+            <p class="text-sm text-gray-400 font-medium leading-relaxed max-w-[170px] mx-auto">
+              {step.desc}
+            </p>
           </div>
-          <h3 class="text-xl font-bold text-white mb-3">Descubrimiento</h3>
-          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
-            Analizamos tus necesidades, objetivos y público objetivo para definir la estrategia perfecta.
-          </p>
-        </div>
-
-        <!-- Paso 02 -->
-        <div class="relative flex flex-col items-center text-center process-item">
-          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
-            02
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Diseño</h3>
-          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
-            Creamos wireframes y prototipos interactivos que reflejan tu visión y mejoran la experiencia de usuario.
-          </p>
-        </div>
-
-        <!-- Paso 03 -->
-        <div class="relative flex flex-col items-center text-center process-item">
-          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
-            03
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Desarrollo</h3>
-          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
-            Transformamos el diseño en código limpio, optimizado y escalable con las mejores tecnologías.
-          </p>
-        </div>
-
-        <!-- Paso 04 -->
-        <div class="relative flex flex-col items-center text-center process-item">
-          <div class="w-20 h-20 rounded-full border border-white/10 bg-[#09090b] flex items-center justify-center text-2xl font-bold text-[#8A4FFF] z-10 mb-6 drop-shadow-[0_0_20px_rgba(138,79,255,0.2)]">
-            04
-          </div>
-          <h3 class="text-xl font-bold text-white mb-3">Lanzamiento</h3>
-          <p class="text-base text-gray-400 font-medium leading-relaxed max-w-xs mx-auto">
-            Desplegamos tu proyecto, realizamos pruebas exhaustivas y te acompañamos en el post-lanzamiento.
-          </p>
-        </div>
-
+        ))}
       </div>
     </div>
+
   </div>
 </section>
 
@@ -82,22 +99,19 @@
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Animación del Encabezado
-  gsap.fromTo('.process-header', 
+  // Encabezado
+  gsap.fromTo('.process-header',
     { y: 40, opacity: 0 },
-    { 
-      y: 0, 
-      opacity: 1, 
-      duration: 1, 
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
       ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.process-header',
-        start: 'top 85%',
-      }
+      scrollTrigger: { trigger: '.process-header', start: 'top 85%' }
     }
   );
 
-  // Animación de los Ítems
+  // Items en cascada
   const items = gsap.utils.toArray('.process-item');
   items.forEach((item: any, i) => {
     gsap.fromTo(item,
@@ -105,18 +119,15 @@
       {
         y: 0,
         opacity: 1,
-        duration: 0.8,
-        delay: i * 0.2, // Efecto cascada
+        duration: 0.7,
+        delay: i * 0.15,
         ease: 'power3.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-        }
+        scrollTrigger: { trigger: item, start: 'top 88%' }
       }
     );
   });
 
-  // Animación de la Línea
+  // Línea horizontal desktop
   gsap.fromTo('.process-line-desktop',
     { scaleX: 0, opacity: 0, transformOrigin: 'left center' },
     {
@@ -124,13 +135,11 @@
       opacity: 1,
       duration: 1.5,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.process-line-desktop',
-        start: 'top 80%',
-      }
+      scrollTrigger: { trigger: '.process-line-desktop', start: 'top 80%' }
     }
   );
 
+  // Línea vertical mobile
   gsap.fromTo('.process-line-mobile',
     { scaleY: 0, opacity: 0, transformOrigin: 'top center' },
     {
@@ -138,10 +147,7 @@
       opacity: 1,
       duration: 1.5,
       ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.process-line-mobile',
-        start: 'top 80%',
-      }
+      scrollTrigger: { trigger: '.process-line-mobile', start: 'top 80%' }
     }
   );
 </script>
