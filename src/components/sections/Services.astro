@@ -1,36 +1,39 @@
 ---
-// Services.astro
+// Services.astro — Servicios de Desarrollo de Software
 import Star from '../ui/Star.astro';
 
-const plans = [
+const services = [
   {
-    title: "Landing page",
-    slug: "landing-page",
+    title: "Aplicaciones Web & SaaS",
+    slug: "saas",
     color: "blue",
+    highlight: "Tu idea convertida en plataforma escalable.",
     features: [
-      "Diseño enfocado 100% en convertir visitas en clientes cualificados",
-      "Hosting, dominio .com/.co y SSL incluidos por 1 año",
-      "1 mes de mantenimiento y soporte incluido"
+      "Plataformas con autenticación, roles, dashboards y base de datos",
+      "Arquitectura escalable lista para crecer a miles de usuarios",
+      "Integración con pagos, APIs y servicios externos"
     ]
   },
   {
-    title: "Web Corporativa",
-    slug: "web-corporativa",
+    title: "Automatizaciones",
+    slug: "automatizaciones",
     color: "purple",
+    highlight: "Recupera horas cada semana automatizando tu operación.",
     features: [
-      "Hasta 5 secciones a medida con diseño elegido por el cliente",
-      "Optimización SEO para posicionarte en Google desde el día 1",
-      "5 correos corporativos + dominio .com/.co gratis por 1 año"
+      "Automatización de procesos manuales con n8n, APIs y webhooks",
+      "Integración entre CRM, WhatsApp, email y herramientas internas",
+      "Flujos que eliminan tareas repetitivas y reducen errores humanos"
     ]
   },
   {
-    title: "E-Commerce",
-    slug: "ecommerce",
+    title: "Sistemas a Medida",
+    slug: "sistemas",
     color: "emerald",
+    highlight: "El software exacto que tu negocio necesita.",
     features: [
-      "Catálogo de productos vinculado a base de datos (hasta 15 por sección)",
-      "Integración con pasarelas de pago y carrito de compras",
-      "Diseño optimizado para la compra online desde cualquier dispositivo"
+      "Sistemas de gestión, reservas, inventario o administración interna",
+      "Paneles administrativos a medida para tu equipo",
+      "Diseño optimizado para usarse desde cualquier dispositivo"
     ]
   }
 ];
@@ -49,43 +52,42 @@ const getColorClasses = (color: string) => {
 
   <div class="relative w-full max-w-7xl mx-auto flex flex-col items-center text-center mb-16 md:mb-24 z-10">
     <div class="text-nextzy-purple-light font-mono mb-8 tracking-widest uppercase text-sm font-semibold border border-nextzy-purple/30 bg-nextzy-purple/10 px-4 py-2 rounded-full inline-block backdrop-blur-sm">
-      // Nuestros Planes
+      // Nuestros Servicios
     </div>
     <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-nextzy-white uppercase leading-tight py-2">
-      Páginas web que <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)] inline-block pt-2 pb-2">venden y escalan.</span>
+      Software que <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-nextzy-purple-light to-nextzy-purple-dark filter drop-shadow-[0_0_15px_rgba(138,79,255,0.3)] inline-block pt-2 pb-2">automatiza y escala.</span>
     </h2>
-    <p class="text-nextzy-gray-400 text-lg max-w-2xl mt-4">Diseño web profesional en tres formatos adaptados al tamaño y objetivos de tu negocio.</p>
+    <p class="text-nextzy-gray-400 text-lg max-w-2xl mt-4">Soluciones a medida para negocios que necesitan más que una plantilla: necesitan tecnología que resuelva problemas reales.</p>
   </div>
 
   <div class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10 cards-container">
-    {plans.map((plan) => {
-      const colors = getColorClasses(plan.color);
+    {services.map((service) => {
+      const colors = getColorClasses(service.color);
       return (
         <div class="pricing-card relative flex flex-col bg-[#12161f] border border-white/5 rounded-[2rem] overflow-hidden group shadow-2xl hover:border-white/10 transition-all duration-500">
           
-          <!-- Efecto Cúspide de Color (Semejante al diseño wavy abstracto de referencia) -->
+          <!-- Efecto Cúspide de Color -->
           <div class={`absolute top-0 inset-x-0 h-64 bg-gradient-to-b ${colors.bg} to-transparent opacity-50 pointer-events-none`}></div>
           <div class={`absolute -top-32 left-1/2 -translate-x-1/2 w-80 h-80 ${colors.blob} blur-[90px] rounded-full pointer-events-none group-hover:opacity-100 transition-opacity duration-700 opacity-50`}></div>
           
           <div class="p-8 md:p-10 relative z-10 flex flex-col h-full">
-            <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">{plan.title}</h3>
+            <h3 class="text-3xl font-bold text-white mb-2 tracking-tight">{service.title}</h3>
             
-            <!-- Título secundario para equilibrar altura -->
             <p class="text-sm text-nextzy-gray-400 mb-8 border-b border-white/10 pb-8 h-12">
-              Transformamos tus objetivos en una experiencia digital.
+              {service.highlight}
             </p>
 
             <a
-              href={`/planes/${plan.slug}`}
-              title={`Ver detalles del plan ${plan.title} - Nextzy Agency`}
+              href="#contacto"
+              title={`Cotizar ${service.title} - Nextzy Agency`}
               class={`w-full py-4 rounded-xl flex items-center justify-center font-bold text-sm tracking-widest uppercase transition-all duration-300 border ${colors.border} bg-white/5 hover:bg-white/10 text-white mb-8 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]`}
             >
-              Más información
+              Cotizar proyecto
             </a>
 
             <div class="flex flex-col gap-4 flex-grow tracking-tight">
-              <span class="text-xs font-mono text-nextzy-gray-500 uppercase tracking-widest mb-2">Características incluidas</span>
-              {plan.features.map(feature => (
+              <span class="text-xs font-mono text-nextzy-gray-500 uppercase tracking-widest mb-2">Qué incluye</span>
+              {service.features.map(feature => (
                 <div class="flex items-start gap-3">
                   <svg class={`w-5 h-5 shrink-0 ${colors.text} mt-0.5`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -100,5 +102,3 @@ const getColorClasses = (color: string) => {
     })}
   </div>
 </section>
-
-

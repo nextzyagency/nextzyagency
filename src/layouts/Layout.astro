@@ -9,8 +9,8 @@ interface Props {
 }
 
 const {
-  title = "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
-  description = "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
+  title = "Nextzy Agency | Desarrollo de Software a Medida — Aplicaciones Web, SaaS y Automatizaciones",
+  description = "Nextzy Agency desarrolla software a medida: aplicaciones web, plataformas SaaS, sistemas de gestión y automatizaciones que optimizan operaciones, escalan con tu negocio y te dan ventaja competitiva.",
   canonicalURL = Astro.url.href,
   ogImage = "/og-image.jpg",
 } = Astro.props;
@@ -38,23 +38,24 @@ const schemaOrg = JSON.stringify({
         "https://github.com/nextzyagency",
       ],
       description:
-        "Agencia de diseño web profesional especializada en landing pages, webs corporativas y e-commerce optimizados para SEO y conversión.",
+        "Agencia de desarrollo de software a medida especializada en aplicaciones web, plataformas SaaS, sistemas de gestión y automatizaciones que escalan con tu negocio.",
       areaServed: "América Latina",
       knowsAbout: [
-        "Diseño Web",
-        "SEO",
-        "Landing Pages",
-        "E-commerce",
-        "Desarrollo Frontend",
+        "Desarrollo de Software",
+        "Aplicaciones Web",
+        "SaaS",
+        "Automatización",
+        "APIs e Integraciones",
+        "Desarrollo a Medida",
       ],
     },
     {
       "@type": "WebPage",
       "@id": "https://www.nextzyagency.online/#webpage",
       url: "https://www.nextzyagency.online/",
-      name: "Nextzy Agency | Diseño Web Profesional que Convierte Visitas en Clientes",
+      name: "Nextzy Agency | Desarrollo de Software a Medida — Aplicaciones Web, SaaS y Automatizaciones",
       description:
-        "Nextzy Agency crea páginas web profesionales optimizadas para SEO. Landing pages, webs corporativas y e-commerce que generan confianza, aumentan ventas y posicionan tu negocio en Google.",
+        "Nextzy Agency desarrolla software a medida: aplicaciones web, plataformas SaaS, sistemas de gestión y automatizaciones que optimizan operaciones y escalan con tu negocio.",
       inLanguage: "es",
       isPartOf: { "@id": "https://www.nextzyagency.online/#organization" },
       about: { "@id": "https://www.nextzyagency.online/#organization" },
@@ -62,11 +63,11 @@ const schemaOrg = JSON.stringify({
     {
       "@type": "Service",
       "@id": "https://www.nextzyagency.online/#services",
-      name: "Diseño y Desarrollo Web",
+      name: "Desarrollo de Software a Medida",
       provider: { "@id": "https://www.nextzyagency.online/#organization" },
-      serviceType: ["Landing Page", "Página Web Corporativa", "E-Commerce"],
+      serviceType: ["Aplicación Web a Medida", "Plataforma SaaS", "Automatización e Integraciones", "Sistema de Gestión"],
       description:
-        "Creamos landing pages, webs corporativas y tiendas online con diseño profesional, SEO integrado y enfoque en la conversión de clientes.",
+        "Desarrollamos aplicaciones web, plataformas SaaS, sistemas de gestión y automatizaciones a medida con arquitectura escalable, código limpio y enfoque en resultados de negocio.",
     },
   ],
 });
@@ -90,7 +91,7 @@ const schemaOrg = JSON.stringify({
     <meta name="author" content="Nextzy Agency" />
     <meta
       name="keywords"
-      content="diseño web profesional, agencia web, landing page, página web para negocios, desarrollo web, SEO, posicionamiento web, pagina web que vende, web corporativa, ecommerce"
+      content="desarrollo de software a medida, agencia de software, desarrollo de aplicaciones web, SaaS, software a medida, automatización, integración de sistemas, desarrollo MVP, sistema de gestión, API, Nextzy Agency"
     />
     <link rel="canonical" href={canonicalURL} />
 
@@ -107,7 +108,7 @@ const schemaOrg = JSON.stringify({
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Nextzy Agency - Diseño Web Profesional"
+      content="Nextzy Agency - Desarrollo de Software a Medida"
     />
     <meta property="og:site_name" content="Nextzy Agency" />
     <meta property="og:locale" content="es_CO" />
@@ -123,7 +124,7 @@ const schemaOrg = JSON.stringify({
     />
     <meta
       name="twitter:image:alt"
-      content="Nextzy Agency - Diseño Web Profesional"
+      content="Nextzy Agency - Desarrollo de Software a Medida"
     />
 
     <!-- Favicon -->
