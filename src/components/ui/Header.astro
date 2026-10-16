@@ -88,7 +88,8 @@ const isActive = (href: string) => href === pathname;
   <!-- Menu (mobile) -->
   <div
     id="mobile-menu"
-    class="lg:hidden mt-3 rounded-3xl bg-[#15171d]/95 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-3 origin-top transition-all duration-300 opacity-0 -translate-y-2 scale-95 pointer-events-none invisible"
+    hidden
+    class="lg:hidden mt-3 rounded-3xl bg-[#15171d] border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] p-3 origin-top transition-[opacity,transform] duration-300 opacity-0 -translate-y-2 scale-95"
   >
     <nav aria-label="Navegación móvil" class="flex flex-col">
       {
@@ -151,13 +152,25 @@ const isActive = (href: string) => href === pathname;
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
   const lines = toggle?.querySelectorAll<HTMLElement>(".menu-line");
-  const hiddenClasses = ["opacity-0", "-translate-y-2", "scale-95", "pointer-events-none", "invisible"];
+  const closedClasses = ["opacity-0", "-translate-y-2", "scale-95"];
+  let closeTimer: number | undefined;
 
   const setMenu = (open: boolean) => {
     if (!toggle || !menu || !lines) return;
+    if ((toggle.getAttribute("aria-expanded") === "true") === open) return;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
-    hiddenClasses.forEach((c) => menu.classList.toggle(c, !open));
+    window.clearTimeout(closeTimer);
+    if (open) {
+      // Fuera del render mientras está cerrado; se muestra y luego se anima
+      menu.hidden = false;
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => closedClasses.forEach((c) => menu.classList.remove(c)))
+      );
+    } else {
+      closedClasses.forEach((c) => menu.classList.add(c));
+      closeTimer = window.setTimeout(() => (menu.hidden = true), 300);
+    }
     lines[0].style.transform = open ? "translateY(6px) rotate(45deg)" : "";
     lines[1].style.opacity = open ? "0" : "";
     lines[2].style.transform = open ? "translateY(-6px) rotate(-45deg)" : "";
