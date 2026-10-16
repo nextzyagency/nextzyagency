@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/ui/Header.astro';
+import Cta from '../components/sections/Cta.astro';
+import Footer from '../components/sections/Footer.astro';
+import { finishedProjects, mockupProjects } from '../data/portafolio';
+---
+
+<Layout
+  title="Portafolio | Nextzy Agency — Proyectos Web Terminados y Maquetas"
+  description="Conoce los proyectos de Nextzy Agency: sitios web en producción para clínicas y negocios reales, y maquetas de e-commerce, barberías y marcas de alimentos."
+>
+  <Header />
+  <main class="w-full">
+
+    <!-- Hero -->
+    <section class="relative w-full pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-purple-900/25 blur-[140px] rounded-full pointer-events-none"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center pf-reveal">
+        <div class="inline-block text-[#8A4FFF] font-mono tracking-widest uppercase text-xs font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full backdrop-blur-sm mb-6">
+          Portafolio
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[1.05]">
+          Lo que hemos <span class="font-drama italic font-normal text-nextzy-purple-light pr-2">construido</span>
+        </h1>
+        <p class="text-gray-400 text-lg leading-relaxed">
+          Proyectos en producción para negocios reales y maquetas que muestran lo que podemos hacer por tu marca.
+        </p>
+      </div>
+    </section>
+
+    <!-- Proyectos terminados -->
+    <section id="terminados" class="relative w-full pb-24 md:pb-32">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-wrap items-center gap-3 md:gap-4 mb-12 pf-reveal">
+          <span class="whitespace-nowrap text-[10px] font-mono uppercase tracking-widest text-emerald-300 border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 rounded-full">
+            ● En producción
+          </span>
+          <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">Proyectos terminados</h2>
+        </div>
+
+        <div class="flex flex-col gap-12 md:gap-16">
+          {
+            finishedProjects.map((p, i) => (
+              <article class="pf-reveal group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center rounded-3xl border border-white/10 bg-[#0d0d10] p-5 md:p-8 transition-all duration-500 hover:border-[#8A4FFF]/50 hover:shadow-[0_0_60px_rgba(138,79,255,0.15)]">
+
+                <!-- Preview -->
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Ver sitio de ${p.name}`}
+                  class:list={[
+                    "relative block aspect-[16/10] overflow-hidden rounded-2xl border border-white/10",
+                    i % 2 === 1 && "lg:order-2",
+                  ]}
+                >
+                  <img
+                    src={p.image}
+                    alt={`Captura del sitio web de ${p.name}`}
+                    width="1200"
+                    height="683"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                </a>
+
+                <!-- Info -->
+                <div class="flex flex-col gap-5 md:px-2">
+                  <div>
+                    <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-2">
+                      {p.category}{p.location && ` · ${p.location}`}
+                    </p>
+                    <h3 class="text-3xl md:text-4xl font-black text-white tracking-tight">{p.name}</h3>
+                  </div>
+
+                  <p class="text-gray-300 leading-relaxed">{p.summary}</p>
+
+                  {p.challenge && (
+                    <div>
+                      <p class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-1">El reto</p>
+                      <p class="text-gray-400 text-sm leading-relaxed">{p.challenge}</p>
+                    </div>
+                  )}
+
+                  {p.solution && (
+                    <div>
+                      <p class="text-xs font-mono uppercase tracking-widest text-gray-500 mb-1">La solución</p>
+                      <p class="text-gray-400 text-sm leading-relaxed">{p.solution}</p>
+                    </div>
+                  )}
+
+                  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {p.highlights.map((h) => (
+                      <li class="flex items-start gap-2 text-sm text-gray-300">
+                        <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="flex flex-wrap gap-2">
+                    {p.tags.map((tag) => (
+                      <span class="text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Visitar ${p.name}`}
+                    class="self-start inline-flex items-center gap-2 bg-[#8A4FFF] hover:bg-[#7b42ea] text-white text-sm font-medium py-2.5 px-6 rounded-full transition-colors shadow-[0_0_20px_rgba(138,79,255,0.3)]"
+                  >
+                    Visitar sitio
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Maquetas -->
+    <section id="maquetas" class="relative w-full pb-24 md:pb-32">
+      <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-purple-900/20 blur-[140px] -translate-y-1/2 rounded-full pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="mb-12 pf-reveal">
+          <div class="flex flex-wrap items-center gap-3 md:gap-4 mb-3">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-[#b68ef8] border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-3 py-1 rounded-full">
+              Concepto
+            </span>
+            <h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">Maquetas</h2>
+          </div>
+          <p class="text-gray-400 max-w-2xl">
+            Diseños funcionales que desarrollamos para explorar distintos rubros. Puedes navegarlos como si fueran sitios reales.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+          {
+            mockupProjects.map((p) => (
+              <article class="pf-reveal group h-full flex flex-col rounded-3xl overflow-hidden border border-white/10 bg-[#0d0d10] transition-all duration-500 hover:border-[#8A4FFF]/50 hover:shadow-[0_0_60px_rgba(138,79,255,0.15)]">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`Ver maqueta de ${p.name}`}
+                  class="relative block aspect-[16/10] overflow-hidden border-b border-white/10"
+                >
+                  <img
+                    src={p.image}
+                    alt={`Captura de la maqueta de ${p.name}`}
+                    width="1200"
+                    height="683"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
+                </a>
+
+                <div class="flex flex-col gap-4 p-7 flex-1">
+                  <div>
+                    <p class="text-[10px] font-mono text-[#8A4FFF] uppercase tracking-widest mb-2">{p.category}</p>
+                    <h3 class="text-xl font-black text-white tracking-tight">{p.name}</h3>
+                  </div>
+
+                  <p class="text-gray-400 text-sm leading-relaxed">{p.summary}</p>
+
+                  <ul class="flex flex-col gap-1.5">
+                    {p.highlights.map((h) => (
+                      <li class="flex items-start gap-2 text-sm text-gray-300">
+                        <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#8A4FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div class="flex flex-wrap gap-2">
+                    {p.tags.map((tag) => (
+                      <span class="text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={`Ver maqueta de ${p.name}`}
+                    class="mt-auto inline-flex items-center gap-2 text-sm font-medium text-[#b68ef8] hover:text-white transition-colors"
+                  >
+                    Ver maqueta
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Cta />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.utils.toArray<HTMLElement>(".pf-reveal").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        }
+      );
+    });
+  });
+</script>

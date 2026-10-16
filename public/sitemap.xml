@@ -12,4 +12,15 @@
       href="https://www.nextzyagency.online/"
     />
   </url>
+  <url>
+    <loc>https://www.nextzyagency.online/portafolio</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link
+      rel="alternate"
+      hreflang="es"
+      href="https://www.nextzyagency.online/portafolio"
+    />
+  </url>
 </urlset>
