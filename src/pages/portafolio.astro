@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/ui/Header.astro';
 import Cta from '../components/sections/Cta.astro';
 import Footer from '../components/sections/Footer.astro';
+import { Image } from 'astro:assets';
 import { finishedProjects, mockupProjects } from '../data/portafolio';
 ---
 
@@ -55,11 +56,11 @@ import { finishedProjects, mockupProjects } from '../data/portafolio';
                     i % 2 === 1 && "lg:order-2",
                   ]}
                 >
-                  <img
+                  <Image
                     src={p.image}
                     alt={`Captura del sitio web de ${p.name}`}
-                    width="1200"
-                    height="683"
+                    widths={[480, 800, 1200]}
+                    sizes="(min-width: 1024px) 600px, 100vw"
                     loading={i === 0 ? "eager" : "lazy"}
                     decoding="async"
                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
@@ -155,11 +156,11 @@ import { finishedProjects, mockupProjects } from '../data/portafolio';
                   title={`Ver maqueta de ${p.name}`}
                   class="relative block aspect-[16/10] overflow-hidden border-b border-white/10"
                 >
-                  <img
+                  <Image
                     src={p.image}
                     alt={`Captura de la maqueta de ${p.name}`}
-                    width="1200"
-                    height="683"
+                    widths={[480, 800, 1200]}
+                    sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
                     loading="lazy"
                     decoding="async"
                     class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"

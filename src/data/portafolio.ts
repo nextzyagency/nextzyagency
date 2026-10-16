@@ -1,4 +1,10 @@
 // portafolio.ts — Proyectos terminados y maquetas mostrados en la home y en /portafolio
+import type { ImageMetadata } from "astro";
+import oralproface from "../assets/portafolio/oralproface.webp";
+import goessence from "../assets/portafolio/goessence.webp";
+import jaimeCorcho from "../assets/portafolio/jaime-corcho.webp";
+import telshop from "../assets/portafolio/telshop.webp";
+import nutriva from "../assets/portafolio/nutriva.webp";
 
 export interface Project {
   slug: string;
@@ -6,7 +12,7 @@ export interface Project {
   category: string;
   location?: string;
   url: string;
-  image: string;
+  image: ImageMetadata;
   summary: string;
   challenge?: string;
   solution?: string;
@@ -21,7 +27,7 @@ export const finishedProjects: Project[] = [
     category: "Salud & Odontología",
     location: "Barranquilla · Bogotá · Maracaibo",
     url: "https://oralproface.online/",
-    image: "/imagenes/portafolio/oralproface.webp",
+    image: oralproface,
     summary:
       "Sitio web para una clínica de implantología estratégica con carga inmediata: dientes fijos en 72 horas para pacientes con casos complejos.",
     challenge:
@@ -42,7 +48,7 @@ export const finishedProjects: Project[] = [
     category: "Estética & Bienestar",
     location: "Barranquilla",
     url: "https://goessence.site/",
-    image: "/imagenes/portafolio/goessence.webp",
+    image: goessence,
     summary:
       "Sitio web para una clínica y spa de estética facial y corporal, posicionada como referente de estética en Barranquilla.",
     challenge:
@@ -66,7 +72,7 @@ export const mockupProjects: Project[] = [
     category: "Barbería Premium",
     location: "Barranquilla",
     url: "https://jaime-corcho.pages.dev/",
-    image: "/imagenes/portafolio/jaime-corcho.webp",
+    image: jaimeCorcho,
     summary:
       "Concepto para una barbería premium: estética oscura y dorada, catálogo de servicios con precios y reserva de citas por WhatsApp.",
     highlights: [
@@ -81,7 +87,7 @@ export const mockupProjects: Project[] = [
     name: "Telshop",
     category: "E-commerce · Tecnología",
     url: "https://telshop-nextzy.pages.dev/",
-    image: "/imagenes/portafolio/telshop.webp",
+    image: telshop,
     summary:
       "Concepto de tienda online de iPhone y accesorios Apple con carrito de compras, catálogo por categorías y estilo minimalista inspirado en Apple.",
     highlights: [
@@ -96,7 +102,7 @@ export const mockupProjects: Project[] = [
     name: "Nutriva Global",
     category: "Alimentos · Distribución",
     url: "https://nutriva-global.pages.dev/",
-    image: "/imagenes/portafolio/nutriva.webp",
+    image: nutriva,
     summary:
       "Concepto para una marca internacional de snacks orgánicos y superfoods con catálogo de productos y canal para distribuidores mayoristas.",
     highlights: [
