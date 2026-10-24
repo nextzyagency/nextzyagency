@@ -1,0 +1,109 @@
+---
+// Faq.astro — Preguntas frecuentes (contenido + schema FAQPage para buscadores y motores de IA)
+const faqs = [
+  {
+    q: "¿Qué hace una agencia de desarrollo de software?",
+    a: "Una agencia de desarrollo de software diseña, programa y mantiene software hecho para una empresa en particular: aplicaciones web, plataformas SaaS, sistemas de gestión o automatizaciones. En Nextzy Agency nos encargamos del proceso completo, desde entender el problema hasta publicar el software y darle soporte después del lanzamiento.",
+  },
+  {
+    q: "¿Trabajan con empresas de toda Colombia?",
+    a: "Sí. Trabajamos de forma remota con empresas de cualquier ciudad de Colombia. Las reuniones son por videollamada y el seguimiento diario es por WhatsApp, así que la distancia no cambia los tiempos ni la calidad del proyecto.",
+  },
+  {
+    q: "¿Cuánto cuesta desarrollar software a medida en Colombia?",
+    a: "El precio depende del alcance: cuántas pantallas, usuarios, integraciones y automatizaciones necesita el proyecto. Por eso cotizamos cada caso por separado. Después de una primera conversación sin costo te enviamos una propuesta con alcance, tecnologías, cronograma y precio.",
+  },
+  {
+    q: "¿Cuánto tiempo toma desarrollar una aplicación web?",
+    a: "Depende de la cantidad de funcionalidades. Una automatización puntual toma menos que una plataforma SaaS con usuarios y pagos. En la etapa de arquitectura definimos el cronograma, y durante el desarrollo recibes una entrega de avance cada semana para probarla y aprobarla.",
+  },
+  {
+    q: "¿Qué tipo de software desarrollan?",
+    a: "Desarrollamos aplicaciones web y plataformas SaaS con usuarios, roles y pagos; software de gestión como inventarios, reservas o paneles administrativos; automatizaciones que conectan WhatsApp, CRM, correo y hojas de cálculo; y sitios web optimizados para SEO.",
+  },
+  {
+    q: "¿Qué tecnologías utilizan?",
+    a: "Usamos Next.js y Astro para el frontend, Node.js, PostgreSQL y Supabase para el backend y los datos, n8n y la API de WhatsApp para automatizaciones, y Cloudflare o Vercel para el hosting. Son tecnologías de código abierto y ampliamente usadas, así que cualquier equipo técnico puede mantener el software.",
+  },
+  {
+    q: "¿Qué pasa después de que entregan el software?",
+    a: "Seguimos trabajando contigo. Corregimos errores, agregamos funciones nuevas, integramos más herramientas y ajustamos la plataforma cuando cambia tu operación. El código queda documentado para que el software pueda crecer sin empezar de cero.",
+  },
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+});
+---
+
+<section id="preguntas" class="w-full relative py-20 px-6 overflow-hidden">
+  <div class="max-w-3xl mx-auto relative z-10">
+
+    <!-- Encabezado -->
+    <div class="flex flex-col items-center text-center mb-14 faq-header">
+      <div class="text-[#8A4FFF] font-mono mb-6 tracking-widest uppercase text-sm font-semibold border border-[#8A4FFF]/30 bg-[#8A4FFF]/10 px-4 py-2 rounded-full inline-block">
+        // Preguntas Frecuentes
+      </div>
+      <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black leading-tight tracking-tighter text-white">
+        Preguntas sobre desarrollo de <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A78BFA] to-[#7C3AED]">software a medida</span>
+      </h2>
+    </div>
+
+    <!-- Lista -->
+    <div class="flex flex-col gap-4">
+      {faqs.map((f, i) => (
+        <details
+          class="faq-item group rounded-2xl border border-white/10 bg-white/[0.03] transition-colors duration-300 hover:border-[#8A4FFF]/40 open:border-[#8A4FFF]/40"
+          open={i === 0}
+        >
+          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none p-6 md:p-7 [&::-webkit-details-marker]:hidden">
+            <h3 class="text-base md:text-lg font-bold text-white">{f.q}</h3>
+            <svg class="w-5 h-5 shrink-0 text-[#8A4FFF] transition-transform duration-300 group-open:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </summary>
+          <p class="px-6 md:px-7 pb-6 md:pb-7 -mt-2 text-gray-400 leading-relaxed">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={faqSchema} />
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo('.faq-header',
+    { y: 40, opacity: 0 },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.faq-header', start: 'top 85%' }
+    }
+  );
+
+  gsap.utils.toArray<HTMLElement>('.faq-item').forEach((item) => {
+    gsap.fromTo(item,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: item, start: 'top 92%' }
+      }
+    );
+  });
+</script>

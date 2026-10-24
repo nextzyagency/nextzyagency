@@ -1,0 +1,32 @@
+# Nextzy Agency
+
+> Nextzy Agency es una agencia de desarrollo de software a medida en Colombia. Diseña y programa aplicaciones web, plataformas SaaS, sistemas de gestión y automatizaciones para empresas de Colombia y Latinoamérica.
+
+## Servicios
+
+- Aplicaciones web y SaaS: login, roles de usuario, dashboards, base de datos, pagos en línea e integración con APIs.
+- Automatización de procesos: flujos con n8n, APIs y webhooks que conectan WhatsApp, CRM, correo y hojas de cálculo.
+- Software de gestión: inventario, reservas, facturación interna, CRM y paneles administrativos a medida.
+
+## Cómo trabajamos
+
+1. Descubrimiento: una llamada sin costo para entender el negocio y el problema.
+2. Arquitectura: pantallas, base de datos, tecnologías y alcance definidos antes de programar.
+3. Desarrollo: entregas de avance cada semana.
+4. Pruebas y lanzamiento: publicación en producción.
+5. Evolución: soporte, nuevas funciones e integraciones después del lanzamiento.
+
+## Tecnologías
+
+Next.js, Astro, Tailwind, Node.js, PostgreSQL, Supabase, n8n, WhatsApp API, Cloudflare, Vercel.
+
+## Páginas
+
+- [Inicio](https://www.nextzyagency.online/): servicios, proceso, tecnologías y preguntas frecuentes.
+- [Portafolio](https://www.nextzyagency.online/portafolio): proyectos en producción y maquetas.
+
+## Contacto
+
+- WhatsApp: +57 305 248 7564
+- Email: nextzyagency@gmail.com
+- Cobertura: toda Colombia y Latinoamérica, de forma remota.
