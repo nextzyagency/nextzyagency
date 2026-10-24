@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="96 400 800 226">
+  <defs>
+    <linearGradient id="nx-arrow" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#5B0FC0"/>
+      <stop offset="1" stop-color="#A21CFF"/>
+    </linearGradient>
+  </defs>
+  <path fill="#1c1d21" d="M107 619 Q102 619 103 614 L165 414 Q167 408 173 408 L234 408 Q240 408 242 413 L268 476 L212 537 L205 516 L170 614 Q168 619 163 619 Z"/>
+  <path fill="#1c1d21" d="M252 590 L306 545 L336 613 Q337 619 331 619 L307 619 Q303 619 300 616 Z"/>
+  <path fill="url(#nx-arrow)" d="M172 619 Q186 620 194 612 L335 487 L355 494 L373 409 L281 425 L306 448 L172 592 Z"/>
+  <text x="418" y="527" fill="#1c1d21" font-family="Sora, Arial, Helvetica, sans-serif" font-weight="700" font-size="116" letter-spacing="2">NEXTZY</text>
+  <text x="422" y="606" fill="#1c1d21" font-family="Sora, Arial, Helvetica, sans-serif" font-weight="600" font-size="56" letter-spacing="26">AGENCY</text>
+</svg>
