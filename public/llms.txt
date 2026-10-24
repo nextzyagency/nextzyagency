@@ -23,7 +23,7 @@ Next.js, Astro, Tailwind, Node.js, PostgreSQL, Supabase, n8n, WhatsApp API, Clou
 ## Páginas
 
 - [Inicio](https://www.nextzyagency.online/): servicios, proceso, tecnologías y preguntas frecuentes.
-- [Portafolio](https://www.nextzyagency.online/portafolio): proyectos en producción y maquetas.
+- [Portafolio](https://www.nextzyagency.online/portafolio/): proyectos en producción y maquetas.
 
 ## Contacto
 

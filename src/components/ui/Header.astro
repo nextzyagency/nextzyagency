@@ -5,13 +5,13 @@ const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 const links = [
   { href: "/", label: "Inicio", title: "Ir al inicio", desktop: false },
   { href: "/#servicios", label: "Servicios", title: "Servicios de desarrollo de software", desktop: true },
-  { href: "/portafolio", label: "Portafolio", title: "Portafolio de proyectos", desktop: true },
+  { href: "/portafolio/", label: "Portafolio", title: "Portafolio de proyectos", desktop: true },
   { href: "/#proceso", label: "Proceso", title: "Nuestro proceso de desarrollo", desktop: true },
   { href: "/#capacidades", label: "Capacidades", title: "Capacidades y tecnologías", desktop: true },
   { href: "/#contacto", label: "Contacto", title: "Contactar a Nextzy Agency", desktop: false },
 ];
 
-const isActive = (href: string) => href === pathname;
+const isActive = (href: string) => (href.replace(/\/$/, "") || "/") === pathname;
 ---
 
 <header
